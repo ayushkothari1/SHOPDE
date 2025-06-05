@@ -10,8 +10,10 @@ listEl.forEach(function (list, index) {
     welcome.style.display = "none";
     list.classList.add("list-active");
     sectionEl.forEach(function (section) {
+      section.style.display = "none";
       section.classList.remove("active-section");
     });
     sectionEl[index].classList.add("active-section");
+    sectionEl[index].style.display = "block";
   });
 });
