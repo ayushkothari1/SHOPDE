@@ -6,7 +6,7 @@
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   /* background: rgb(3, 3, 45); */
 }
 
@@ -18,7 +18,8 @@ header {
   margin-right: 1%;
   background: rgb(19, 19, 19);
   display: flex;
-  width: 98%;
+  width: 99%;
+  height: 9vh;
 }
 
 .logo {
@@ -92,7 +93,7 @@ header nav ul {
   text-transform: uppercase;
   color: greenyellow;
   background: rgb(3, 3, 57);
-  height: 90vh;
+  height: 89vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,16 +102,27 @@ header nav ul {
 /* ---- */
 
 .active-section {
-  min-height: 100vh;
+  min-height: 88.5vh;
   /* width: 100%; */
   background: yellow;
   margin-left: 1%;
   margin-right: 1%;
+  width: 99%;
 }
 /* ---------------Section1 starts -----------------*/
 
+.section {
+  display: none;
+}
+
 .section1 {
-  background: rgb(228, 222, 222);
+  background: linear-gradient(
+    to right,
+    rgb(81 231 219 / 20%),
+    rgb(90 99 162 / 40%),
+    rgb(212 231 221 / 40%),
+    rgb(138 215 179 / 60%)
+  );
 }
 
 .section1 .shoping {
@@ -143,6 +155,43 @@ header nav ul {
 .section1 .shoping .one .demo {
   font-size: 100px 10px 0 0;
   cursor: pointer;
-  background: yellow;
+  background: red;
   padding: 10px;
+  margin-top: 90px;
+  margin-right: 100px;
+  border-radius: 6px;
+  color: white;
+  transition: 0.5s background;
+}
+
+.section1 .shoping .one .demo:hover {
+  background: green;
+}
+
+.section1 .shoping .one .demo i {
+  margin-right: 5px;
+}
+
+.section1 .shoping img {
+  width: 48%;
+  margin-top: 50px;
+  margin-right: 2%;
+  border-radius: 10px;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.7);
+}
+
+.section1 .show-service {
+  margin-top: 10%;
+}
+
+.section1 .show-service h1 {
+  text-align: center;
+}
+
+.section1 .show-service p {
+  text-align: center;
+}
+
+.section1 .show-service .service-box {
+  display: flex;
 }
