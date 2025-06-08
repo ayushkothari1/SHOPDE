@@ -1,5 +1,6 @@
 const listEl = document.querySelectorAll(".list");
 const sectionEl = document.querySelectorAll(".section");
+const footerEl = document.querySelector("footer");
 const welcome = document.querySelector(".welcome");
 
 listEl.forEach(function (list, index) {
@@ -9,6 +10,7 @@ listEl.forEach(function (list, index) {
     });
     welcome.style.display = "none";
     list.classList.add("list-active");
+    footerEl.style.display = "flex";
     sectionEl.forEach(function (section) {
       section.style.display = "none";
       section.classList.remove("active-section");
