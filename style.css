@@ -271,18 +271,21 @@ header nav ul {
 
 .boxes h4 {
   text-align: center;
+  color: rgb(55 65 81);
 }
 
 .boxes p {
   font-weight: lighter;
+  text-align: center;
   font-size: 12px;
   color: gray;
+  margin-right: 14%;
 }
 
 .boxes img {
   width: 120px;
   text-align: center;
-  margin-left: 27%;
+  margin-left: 24%;
 }
 
 .boxes .money-cart {
@@ -292,6 +295,7 @@ header nav ul {
   right: 43px;
   height: 40px;
   display: flex;
+
   /* width: 10px; */
 }
 .boxes .money-cart .price {
@@ -302,12 +306,29 @@ header nav ul {
 }
 .boxes .money-cart .add {
   position: absolute;
-  top: 1%;
-  left: 145px;
-  width: 125px;
+  top: -8%;
+  left: 133px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
   height: 40px;
-  border: 2px solid black;
-  border-radius: 5%;
+  border: 2px solid rgba(55, 65, 81, 0.79);
+  border-radius: 100px;
+  color: rgb(55 65 81);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.boxes .money-cart .add:hover {
+  background: rgba(4, 12, 26, 0.79);
+  color: white;
+}
+
+.boxes .money-cart .add span {
+  position: absolute;
+  top: 26%;
+  font-size: 14px;
 }
 
 /* ------------- section2 ends -------------- */
