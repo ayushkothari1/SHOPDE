@@ -267,6 +267,11 @@ header nav ul {
   display: flex;
   flex-wrap: wrap;
   min-width: 300px;
+  transition: trasnform 2s;
+  /* cursor: alias; */
+}
+.boxes:hover {
+  transform: scale(1.1);
 }
 
 .boxes h4 {
