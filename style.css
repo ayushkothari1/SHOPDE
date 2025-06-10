@@ -235,7 +235,8 @@ header nav ul {
 
 /* ------------- section2 starts -------------- */
 .section2 {
-  background: #d0eaff;
+  background: white;
+  /* background: #d0eaff; */
 
   /* background: linear-gradient(
     to right,
@@ -248,7 +249,7 @@ header nav ul {
 .section2 h1 {
   text-align: center;
   padding-top: 2%;
-  color: salmon;
+  color: black;
 }
 .shop-clothes div {
   margin: 2% 10% 0%;
@@ -267,16 +268,18 @@ header nav ul {
   display: flex;
   flex-wrap: wrap;
   min-width: 300px;
-  transition: trasnform 2s;
+  border: 3px solid black;
   /* cursor: alias; */
 }
 .boxes:hover {
+  transition: all 1s;
   transform: scale(1.1);
 }
 
 .boxes h4 {
   text-align: center;
   color: rgb(55 65 81);
+  /* font-size: 15px; */
 }
 
 .boxes p {
@@ -289,6 +292,7 @@ header nav ul {
 
 .boxes img {
   width: 120px;
+  height: 180px;
   text-align: center;
   margin-left: 24%;
 }
@@ -311,22 +315,22 @@ header nav ul {
 }
 .boxes .money-cart .add {
   position: absolute;
-  top: -8%;
+  top: -15%;
   left: 133px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 120px;
   height: 40px;
-  border: 2px solid rgba(55, 65, 81, 0.79);
+  border: 2px solid rgba(0, 0, 0, 0.79);
   border-radius: 100px;
   color: rgb(55 65 81);
   cursor: pointer;
-  transition: all 0.5s;
 }
 
 .boxes .money-cart .add:hover {
-  background: rgba(4, 12, 26, 0.79);
+  background: rgba(0, 0, 0, 0.79);
+  transition: all 1s;
   color: white;
 }
 
