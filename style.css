@@ -125,7 +125,40 @@ header nav ul {
     rgb(138 215 179 / 60%)
   );
 }
+.movie {
+  position: fixed;
+  top: 53%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  background: white;
+  /* display: flex; */
+  display: none;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+}
 
+.movie video {
+  position: relative;
+  max-width: 900px;
+  outline: none;
+}
+.close-icon {
+  width: 50px;
+  height: 50px;
+  background: black;
+  position: absolute;
+  color: blue;
+  cursor: pointer;
+  transition: 0.4s background;
+  right: 20px;
+  border-radius: 50%;
+  box-shadow: 4px 3px 6px rgba(255, 2, 2, 0.3);
+  font-size: 15px;
+}
+.close-icon:hover {
+  background: rgb(10, 10, 10);
+}
 .section1 .shoping {
   /* background-color: yellow; */
   display: flex;

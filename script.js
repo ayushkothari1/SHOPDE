@@ -1,11 +1,17 @@
 const listEl = document.querySelectorAll(".list");
 const sectionEl = document.querySelectorAll(".section");
+const shoping = document.querySelector(".shoping");
+const section1 = document.querySelector(".section1");
 const section2 = document.querySelector(".section2");
 const CART = document.querySelector(".cart");
 const boxes = document.querySelectorAll(".boxes");
 const footerEl = document.querySelector("footer");
 const welcome = document.querySelector(".welcome");
+const demo = document.querySelector(".demo");
+const movie = document.querySelector(".movie");
+const closeIcon = document.querySelector(".close-icon");
 const addminus = document.querySelectorAll(".addminus");
+const Video = document.querySelector("video");
 
 listEl.forEach(function (list, index) {
   list.addEventListener("click", function (e) {
@@ -34,4 +40,15 @@ addminus.forEach(function (e) {
       e.innerHTML = "Remove Item";
     }
   });
+});
+
+demo.addEventListener("click", function () {
+  movie.style.display = "flex";
+  // shoping.style.visibility = "hidden";
+});
+
+closeIcon.addEventListener("click", function () {
+  movie.style.display = "none";
+  Video.pause();
+  Video.currentTime = 0;
 });
