@@ -141,6 +141,7 @@ header nav ul {
 .movie video {
   position: relative;
   max-width: 900px;
+  min-height: 500px;
   outline: none;
 }
 .close-icon {
