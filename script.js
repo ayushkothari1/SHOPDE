@@ -1,5 +1,6 @@
 const listEl = document.querySelectorAll(".list");
 const sectionEl = document.querySelectorAll(".section");
+const activeSection = document.querySelector(".active-section");
 const shoping = document.querySelector(".shoping");
 const section1 = document.querySelector(".section1");
 const section2 = document.querySelector(".section2");
@@ -35,9 +36,11 @@ addminus.forEach(function (e) {
     if (e.classList.contains("minus")) {
       e.classList.remove("minus");
       e.innerHTML = "ADD TO CART";
+      removeFromCart();
     } else {
       e.classList.add("minus");
       e.innerHTML = "Remove Item";
+      addToCart();
     }
   });
 });
@@ -52,3 +55,5 @@ closeIcon.addEventListener("click", function () {
   Video.pause();
   Video.currentTime = 0;
 });
+
+function addToCart() {}

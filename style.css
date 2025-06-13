@@ -20,6 +20,7 @@ header {
   display: flex;
   width: 98%;
   height: 9vh;
+  position: relative;
 }
 
 .logo {
@@ -81,6 +82,44 @@ header nav ul {
   }
 }
 
+.green-signal {
+  position: absolute;
+  background: white;
+  top: 5%;
+  left: 42%;
+  /* width: 200px; */
+  /* height: 43px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+  color: darkgreen;
+  font-weight: 500;
+  padding: 13px;
+  font-size: 20px;
+  gap: 13px;
+}
+.red-signal {
+  position: absolute;
+  background: white;
+  top: 5%;
+  left: 43%;
+  /* width: 200px; */
+  /* height: 43px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+  color: darkred;
+  font-weight: 500;
+  padding: 13px;
+  /* visibility: hidden; */
+  font-size: 20px;
+  gap: 13px;
+}
+
 /* ---------------header ends -----------------*/
 
 /* ------------- main starts --------- */
@@ -129,20 +168,49 @@ header nav ul {
   position: fixed;
   top: 53%;
   left: 48%;
-  transform: translate(-50%, -50%);
-  background: white;
+  /* background: white; */
+  background: linear-gradient(
+    to right,
+    rgb(81 231 219 / 20%),
+    rgb(90 99 162 / 40%),
+    rgb(212 231 221 / 40%),
+    rgb(138 215 179 / 60%)
+  );
   /* display: flex; */
   display: none;
-  width: 70%;
+  width: 65%;
+  height: 70%;
   justify-content: center;
   align-items: center;
+  transform: translate(-50%, -50%);
+  animation: videos 0.5s linear forwards;
 }
 
 .movie video {
   position: relative;
+  outline: none;
+  /* top: 0; */
   max-width: 900px;
   min-height: 500px;
-  outline: none;
+  animation: video 0.7s linear forwards;
+}
+@keyframes video {
+  0% {
+    max-height: 0;
+    max-width: 0;
+  }
+  100% {
+    max-width: 900px;
+    max-height: 500px;
+  }
+}
+@keyframes videos {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 53%;
+  }
 }
 .close-icon {
   width: 50px;
@@ -152,7 +220,7 @@ header nav ul {
   color: blue;
   cursor: pointer;
   transition: 0.4s background;
-  right: 20px;
+  right: 0px;
   border-radius: 50%;
   box-shadow: 4px 3px 6px rgba(255, 2, 2, 0.3);
   font-size: 15px;
