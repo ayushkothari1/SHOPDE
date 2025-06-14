@@ -13,6 +13,40 @@ const movie = document.querySelector(".movie");
 const closeIcon = document.querySelector(".close-icon");
 const addminus = document.querySelectorAll(".addminus");
 const Video = document.querySelector("video");
+// const header = document.querySelector("header");
+const greenSignal = document.querySelector(".greenS");
+const redSingnal = document.querySelector(".redS");
+
+const profession = [
+  "Shopping website !",
+  "best Website !",
+  "Food Website !",
+  "Clothes Website !",
+  "Cosmatic website !",
+  "our website !",
+  "Shodpe !",
+];
+
+let professionIndex = 0;
+let professionCharacterIndex = 0;
+updateText();
+
+function updateText() {
+  // let currentProfession = profession[professionIndex];
+  welcome.innerHTML = `<h1>Welcome to ${profession[professionIndex].slice(
+    0,
+    professionCharacterIndex
+  )} </h1>`;
+  professionCharacterIndex++;
+  if (professionCharacterIndex === profession[professionIndex].length + 1) {
+    professionIndex++;
+    professionCharacterIndex = 0;
+  }
+  if (professionIndex === profession.length) {
+    professionIndex = 0;
+  }
+  setTimeout(updateText, 200);
+}
 
 listEl.forEach(function (list, index) {
   list.addEventListener("click", function (e) {
@@ -36,6 +70,7 @@ addminus.forEach(function (e) {
     if (e.classList.contains("minus")) {
       e.classList.remove("minus");
       e.innerHTML = "ADD TO CART";
+      // redSingnal.classList.add("red-signal");
       removeFromCart();
     } else {
       e.classList.add("minus");
@@ -45,6 +80,29 @@ addminus.forEach(function (e) {
   });
 });
 
+function addToCart() {
+  const header = document.querySelector("header");
+
+  let addcart = document.createElement("div");
+  addcart.classList.add("green-signal");
+  let i = document.createElement("i");
+  i.classList.add("fa-solid", "fa-circle-check");
+  addcart.appendChild(i);
+  addcart.append(" Item added to cart");
+  header.appendChild(addcart);
+}
+function removeFromCart() {
+  const header = document.querySelector("header");
+
+  let removeCart = document.createElement("div");
+  removeCart.classList.add("red-signal");
+  let i = document.createElement("i");
+  // removeCart.innerHTML = i + "Item removed from cart";
+  i.classList.add("fa-solid", "fa-circle-xmark");
+  removeCart.appendChild(i);
+  removeCart.append(" Item removed from cart");
+  header.appendChild(removeCart);
+}
 demo.addEventListener("click", function () {
   movie.style.display = "flex";
   // shoping.style.visibility = "hidden";
@@ -56,4 +114,4 @@ closeIcon.addEventListener("click", function () {
   Video.currentTime = 0;
 });
 
-function addToCart() {}
+// function addToCart() {}

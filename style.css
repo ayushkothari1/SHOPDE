@@ -20,7 +20,7 @@ header {
   display: flex;
   width: 98%;
   height: 9vh;
-  position: relative;
+  /* position: relative; */
 }
 
 .logo {
@@ -83,9 +83,10 @@ header nav ul {
 }
 
 .green-signal {
-  position: absolute;
+  position: fixed;
   background: white;
-  top: 5%;
+  /* top: 5%; */
+  visibility: hidden;
   left: 42%;
   /* width: 200px; */
   /* height: 43px; */
@@ -97,14 +98,31 @@ header nav ul {
   color: darkgreen;
   font-weight: 500;
   padding: 13px;
-  font-size: 20px;
+  font-size: 22px;
   gap: 13px;
+  box-shadow: 2px 2px 2px rgba(233, 229, 229, 0.3);
+  animation: popupG 2s;
+}
+
+@keyframes popupG {
+  0% {
+    top: 0;
+    visibility: visible;
+  }
+  10% {
+    top: 6%;
+  }
+  100% {
+    top: 6%;
+  }
 }
 .red-signal {
   position: absolute;
   background: white;
+  visibility: hidden;
   top: 5%;
   left: 43%;
+  box-shadow: 2px 2px 2px rgba(233, 229, 229, 0.3);
   /* width: 200px; */
   /* height: 43px; */
   display: flex;
@@ -115,9 +133,23 @@ header nav ul {
   color: darkred;
   font-weight: 500;
   padding: 13px;
-  /* visibility: hidden; */
-  font-size: 20px;
+  visibility: hidden;
+  font-size: 22px;
   gap: 13px;
+  animation: popupR 2s;
+}
+
+@keyframes popupR {
+  0% {
+    top: 0;
+    visibility: visible;
+  }
+  10% {
+    top: 6%;
+  }
+  100% {
+    top: 6%;
+  }
 }
 
 /* ---------------header ends -----------------*/
@@ -129,7 +161,7 @@ header nav ul {
   /* margin: 18% 0 0 28%; */
   margin-left: 1%;
   margin-right: 1%;
-  font-size: 50px;
+  font-size: 30px;
   text-transform: uppercase;
   color: greenyellow;
   background: rgb(3, 3, 57);
