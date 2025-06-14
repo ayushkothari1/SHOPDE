@@ -19,12 +19,12 @@ const redSingnal = document.querySelector(".redS");
 
 const profession = [
   "Shopping website !",
-  "best Website !",
   "Food Website !",
   "Clothes Website !",
   "Cosmatic website !",
   "our website !",
-  "Shodpe !",
+  "best Website !",
+  "Shopde !",
 ];
 
 let professionIndex = 0;
