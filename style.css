@@ -412,6 +412,8 @@ header nav ul {
   /* background: yellow; */
 }
 
+/* boxes styling starts------------ */
+
 .boxes {
   background: white;
   border-radius: 10px;
@@ -492,6 +494,7 @@ header nav ul {
   top: 26%;
   font-size: 14px;
 }
+/* boxes styling ends------------ */
 
 /* ------------- section2 ends -------------- */
 
@@ -506,6 +509,91 @@ header nav ul {
 /* ----------------- section3 ends ---------*/
 
 /* -------------- */
+
+/* --------------- contact-section starts ---------*/
+
+.contact-section {
+  background: #fdf7ec;
+  padding-top: 7%;
+}
+
+.contact-section h1 {
+  text-align: center;
+  font-size: 40px;
+}
+.contact-section h1 span {
+  color: #14bfac;
+}
+
+.contact-section p {
+  text-align: center;
+  font-size: 20px;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 20px;
+  color: #000000;
+}
+
+.contact-detail {
+  display: flex;
+  justify-content: center;
+  gap: 17%;
+  margin-top: 6%;
+  background-image: url("https://www.bharatloads.com/images/yellow_dotes_tr.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+}
+
+.contact-detail .media {
+  /* background: yellow; */
+  width: 100px;
+}
+
+.contact-detail .media .media-box {
+  background: #07e7cc;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px 15px 10px 15px;
+}
+
+.contact-detail .media .email {
+  background-image: url("https://www.bharatloads.com/images/mail_icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.contact-detail .media .call {
+  background-image: url("https://www.bharatloads.com/images/phone_icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.contact-detail .media .location {
+  background-image: url("https://www.bharatloads.com/images/location_icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.contact-detail .media span {
+  margin-top: 40%;
+  /* text-align: center; */
+  display: flex;
+  color: #000000;
+  font-weight: lighter;
+  justify-content: center;
+}
+
+.contact-detail .media div {
+  margin-top: 4%;
+  font-size: 30px;
+  justify-content: center;
+  display: flex;
+  font-weight: bolder;
+}
+
+.contact-detail .media .address {
+  margin-left: 60%;
+}
+/* --------------- contact-section starts ---------*/
 
 /* --------------- footer starts ---------*/
 

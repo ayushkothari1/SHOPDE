@@ -16,6 +16,7 @@ const Video = document.querySelector("video");
 // const header = document.querySelector("header");
 const greenSignal = document.querySelector(".greenS");
 const redSingnal = document.querySelector(".redS");
+const mainEl = document.querySelector("main");
 
 const profession = [
   "Shopping website !",
