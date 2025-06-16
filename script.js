@@ -5,6 +5,7 @@ const shoping = document.querySelector(".shoping");
 const section1 = document.querySelector(".section1");
 const section2 = document.querySelector(".section2");
 const CART = document.querySelector(".cart");
+const cartBoxes = document.querySelector(".cart-boxes");
 const boxes = document.querySelectorAll(".boxes");
 const footerEl = document.querySelector("footer");
 const welcome = document.querySelector(".welcome");
@@ -65,23 +66,48 @@ listEl.forEach(function (list, index) {
     sectionEl[index].style.display = "block";
   });
 });
+// productToCartMap.set(box, clone);
+
+const productToCartMap = new Map();
+// console.log(productToCartMap);
 
 addminus.forEach(function (e) {
   e.addEventListener("click", function () {
+    const box = e.closest(".boxes");
     if (e.classList.contains("minus")) {
       e.classList.remove("minus");
       e.innerHTML = "ADD TO CART";
+      const cloneBox = productToCartMap.get(box);
       // redSingnal.classList.add("red-signal");
-      removeFromCart();
+      if (cloneBox) {
+        removeFromCart(cloneBox);
+        productToCartMap.delete(box);
+      }
     } else {
       e.classList.add("minus");
       e.innerHTML = "Remove Item";
-      addToCart();
+      addToCart(box);
     }
   });
 });
 
-function addToCart() {
+function addToCart(box) {
+  const clone = box.cloneNode(true);
+  const e = clone.querySelector(".addminus");
+  e.classList.add("minus");
+  e.innerHTML = "Remove Item";
+  e.addEventListener("click", function () {
+    e.classList.remove("minus");
+    e.innerHTML = "ADD TO CART";
+    removeFromCart(clone);
+
+    const originalBtn = box.querySelector(".addminus");
+    originalBtn.classList.remove("minus");
+    originalBtn.innerHTML = "ADD TO CART";
+    productToCartMap.delete(box);
+  });
+  cartBoxes.appendChild(clone);
+  productToCartMap.set(box, clone);
   const header = document.querySelector("header");
 
   let addcart = document.createElement("div");
@@ -92,7 +118,11 @@ function addToCart() {
   addcart.append(" Item added to cart");
   header.appendChild(addcart);
 }
-function removeFromCart() {
+
+function removeFromCart(box) {
+  if (cartBoxes.contains(box)) {
+    cartBoxes.removeChild(box);
+  }
   const header = document.querySelector("header");
 
   let removeCart = document.createElement("div");

@@ -51,6 +51,7 @@ header nav ul {
   color: white;
   text-transform: uppercase;
   user-select: none;
+  display: flex;
 }
 
 .list:hover {
@@ -69,10 +70,10 @@ header nav ul {
   border-radius: 25px;
   animation: ListAnimation 0.7s forwards;
 }
-
+/* 
 .cart {
   display: flex;
-}
+} */
 
 @keyframes ListAnimation {
   0% {
@@ -425,10 +426,21 @@ header nav ul {
   border: 3px solid black;
   /* cursor: alias; */
 }
+/* .cart .boxes {
+  background: white;
+  border-radius: 10px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 420px;
+  border: 3px solid black; */
+/* cursor: alias; */
+/* }
 .boxes:hover {
   transition: all 1s;
   transform: scale(1.1);
-}
+} */
 
 .boxes h4 {
   text-align: center;
