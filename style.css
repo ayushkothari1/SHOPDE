@@ -426,26 +426,16 @@ header nav ul {
   border: 3px solid black;
   /* cursor: alias; */
 }
-/* .cart .boxes {
-  background: white;
-  border-radius: 10px;
-  padding: 25px 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 420px;
-  border: 3px solid black; */
-/* cursor: alias; */
-/* }
+
 .boxes:hover {
   transition: all 1s;
   transform: scale(1.1);
-} */
+}
 
 .boxes h4 {
   text-align: center;
   color: rgb(55 65 81);
-  /* font-size: 15px; */
+  font-size: 15px;
 }
 
 .boxes p {
