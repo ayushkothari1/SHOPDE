@@ -1,3 +1,135 @@
 /* @media  {
     
 } */
+/* codesendbox */
+
+/* oroduct rendor  */
+
+/* @media (max-width: 1500px) {
+  .list {
+    font-size: 99%;
+  }
+}
+@media (max-width: 1450px) {
+  .list {
+    font-size: 96%;
+  }
+}
+@media (max-width: 1415px) {
+  .list {
+    font-size: 93%;
+  }
+}
+@media (max-width: 1376px) {
+  .list {
+    font-size: 90%;
+  }
+}
+@media (max-width: 1338px) {
+  .list {
+    font-size: 86%;
+  }
+}
+@media (max-width: 1288px) {
+  .list {
+    font-size: 82%;
+  }
+}
+@media (max-width: 1238px) {
+  .list {
+    font-size: 77%;
+  }
+}
+@media (max-width: 1175px) {
+  .list {
+    font-size: 72%;
+  }
+}
+@media (max-width: 1111px) {
+  .list {
+    font-size: 67%;
+  }
+}
+@media (max-width: 1049px) {
+  .list {
+    font-size: 63%;
+  }
+}
+@media (max-width: 999px) {
+  .list {
+    font-size: 58%;
+  }
+}
+@media (max-width: 936px) {
+  .list {
+    font-size: 53%;
+  }
+}
+@media (max-width: 873px) {
+  .list {
+    font-size: 48%;
+  }
+}
+@media (max-width: 810px) {
+  .list {
+    font-size: 43%;
+  }
+}
+@media (max-width: 748px) {
+  .list {
+    font-size: 38%;
+  }
+}
+@media (max-width: 685px) {
+  .list {
+    font-size: 33%;
+  }
+}
+@media (max-width: 677px) {
+  .list {
+    font-size: 20%;
+  }
+} */
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-left: 0;
+  }
+
+  .list {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .list {
+    font-size: 0.9rem;
+  }
+
+  nav ul {
+    gap: 0.8rem;
+  }
+}
