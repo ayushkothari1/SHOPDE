@@ -71,6 +71,8 @@ listEl.forEach(function (list, index) {
 
 // console.log(productToCartMap);
 
+//clothes section
+
 let productForm = document.getElementById("submit");
 
 const productToCartMap = new Map();
@@ -78,7 +80,7 @@ let products = [];
 
 function renderProducts() {
   let productWithBox = products.map((e) => {
-    return `  
+    return `
     <div class="boxes">
     <h4>${e.pname}</h4>
     <p>
@@ -120,49 +122,49 @@ function renderProducts() {
     });
   });
 }
-// function addToproductcart(box) {
-//   const clone = box.cloneNode(true);
-//   const e = clone.querySelector(".addminus");
-//   e.classList.add("minus");
-//   e.innerHTML = "Remove Item";
-//   e.addEventListener("click", function () {
-//     e.classList.remove("minus");
-//     e.innerHTML = "ADD TO CART";
-//     removeFromCart(clone);
+function addToproductcart(box) {
+  const clone = box.cloneNode(true);
+  const e = clone.querySelector(".addminus");
+  e.classList.add("minus");
+  e.innerHTML = "Remove Item";
+  e.addEventListener("click", function () {
+    e.classList.remove("minus");
+    e.innerHTML = "ADD TO CART";
+    removeFromCart(clone);
 
-//     const originalBtn = box.querySelector(".addminus");
-//     originalBtn.classList.remove("minus");
-//     originalBtn.innerHTML = "ADD TO CART";
-//     productToCartMap.delete(box);
-//   });
-//   cartBoxes.appendChild(clone);
-//   productToCartMap.set(box, clone);
-//   // const header = document.querySelector("header");
+    const originalBtn = box.querySelector(".addminus");
+    originalBtn.classList.remove("minus");
+    originalBtn.innerHTML = "ADD TO CART";
+    productToCartMap.delete(box);
+  });
+  cartBoxes.appendChild(clone);
+  productToCartMap.set(box, clone);
+  // const header = document.querySelector("header");
 
-//   let addcart = document.createElement("div");
-//   addcart.classList.add("green-signal");
-//   let i = document.createElement("i");
-//   i.classList.add("fa-solid", "fa-circle-check");
-//   addcart.appendChild(i);
-//   addcart.append(" Item added to cart");
-//   header.appendChild(addcart);
-// }
+  let addcart = document.createElement("div");
+  addcart.classList.add("green-signal");
+  let i = document.createElement("i");
+  i.classList.add("fa-solid", "fa-circle-check");
+  addcart.appendChild(i);
+  addcart.append(" Item added to cart");
+  header.appendChild(addcart);
+}
 
-// function removeToproductcart(box) {
-//   if (cartBoxes.contains(box)) {
-//     cartBoxes.removeChild(box);
-//   }
-//   // const header = document.querySelector("header");
+function removeToproductcart(box) {
+  if (cartBoxes.contains(box)) {
+    cartBoxes.removeChild(box);
+  }
+  // const header = document.querySelector("header");
 
-//   let removeCart = document.createElement("div");
-//   removeCart.classList.add("red-signal");
-//   let i = document.createElement("i");
-//   // removeCart.innerHTML = i + "Item removed from cart";
-//   i.classList.add("fa-solid", "fa-circle-xmark");
-//   removeCart.appendChild(i);
-//   removeCart.append(" Item removed from cart");
-//   header.appendChild(removeCart);
-// }
+  let removeCart = document.createElement("div");
+  removeCart.classList.add("red-signal");
+  let i = document.createElement("i");
+  // removeCart.innerHTML = i + "Item removed from cart";
+  i.classList.add("fa-solid", "fa-circle-xmark");
+  removeCart.appendChild(i);
+  removeCart.append(" Item removed from cart");
+  header.appendChild(removeCart);
+}
 renderProducts();
 
 function addProduct(e) {
@@ -184,6 +186,47 @@ function addProduct(e) {
   e.target[2].value = "";
   e.target[3].value = "";
 }
+
+// food section
+
+// let foodToCartMap = new Map();
+let foodproducts = [];
+
+function foodRenderProducts() {
+  let foodwithBox = foodproducts.map((food) => {
+    return `    <div class="boxes">
+    <h4>${food.pname}</h4>
+    <p>
+    </p>
+    <img src="${food.imlink}" alt="">
+    <div class="money-cart">
+    <div class="price">$ ${food.pprice}</div>
+    <div class="add"><span class="addminus">ADD TO CART</span></div>
+    </div>
+    </div>`;
+  });
+  let foodBox = document.getElementById("foodBox");
+  foodBox.innerHTML = foodwithBox.join("");
+}
+
+function addfoodproduct(food) {
+  food.preventDefault();
+  let convert = {
+    pname: food.target[0].value,
+    pabout: food.target[1].value,
+    imlink: food.target[2].value,
+    pprice: food.target[3].value,
+  };
+  foodRenderProducts();
+  foodproducts = [...foodproducts, convert];
+  renderProducts();
+  food.target[0].value = "";
+  food.target[1].value = "";
+  food.target[2].value = "";
+  food.target[3].value = "";
+}
+foodRenderProducts();
+
 addminus.forEach(function (e) {
   e.addEventListener("click", function () {
     const box = e.closest(".boxes");
@@ -226,13 +269,13 @@ function addToCart(box) {
   cartBoxes.appendChild(clone);
   productToCartMap.set(box, clone);
 
-  // let addcart = document.createElement("div");
-  // addcart.classList.add("green-signal");
-  // let i = document.createElement("i");
-  // i.classList.add("fa-solid", "fa-circle-check");
-  // addcart.appendChild(i);
-  // addcart.append(" Item added to cart");
-  // header.appendChild(addcart);
+  let addcart = document.createElement("div");
+  addcart.classList.add("green-signal");
+  let i = document.createElement("i");
+  i.classList.add("fa-solid", "fa-circle-check");
+  addcart.appendChild(i);
+  addcart.append(" Item added to cart");
+  header.appendChild(addcart);
 }
 
 function removeFromCart(box) {
@@ -242,14 +285,14 @@ function removeFromCart(box) {
   }
   // const header = document.querySelector("header");
 
-  // let removeCart = document.createElement("div");
-  // removeCart.classList.add("red-signal");
-  // let i = document.createElement("i");
-  // // removeCart.innerHTML = i + "Item removed from cart";
-  // i.classList.add("fa-solid", "fa-circle-xmark");
-  // removeCart.appendChild(i);
-  // removeCart.append(" Item removed from cart");
-  // header.appendChild(removeCart);
+  let removeCart = document.createElement("div");
+  removeCart.classList.add("red-signal");
+  let i = document.createElement("i");
+  // removeCart.innerHTML = i + "Item removed from cart";
+  i.classList.add("fa-solid", "fa-circle-xmark");
+  removeCart.appendChild(i);
+  removeCart.append(" Item removed from cart");
+  header.appendChild(removeCart);
 }
 demo.addEventListener("click", function () {
   movie.style.display = "flex";

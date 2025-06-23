@@ -223,7 +223,34 @@
       </div>
       <div class="section section3">
         <div class="shop-clothes">
-          <div>
+                              <form id="foodform" onsubmit="addfoodproduct(event)">
+            <div class="mb-0">
+              <label for="exampleInputEmail1" class="form-label"
+                >Product Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="foodName"
+                aria-describedby="emailHelp"
+              />
+            </div>
+                        <div class="mb-0">
+              <label for="exampleInputPassword1" class="form-label">About Product</label>
+              <input type="text" class="form-control" id="foodAbout" />
+            </div>
+            <div class="mb-0">
+              <label for="exampleInputPassword1" class="form-label">img-link</label>
+              <input type="link" class="form-control" id="foodLink" />
+            </div>
+                        <div class="mb-0">
+              <label for="exampleInputPassword1" class="form-label">Price</label>
+              <input type="number" class="form-control" id="foodprice" />
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+          </form>
+          <div id="foodBox">
             <div class="boxes">
               <h4>Chicken Biryani ...</h4>
               <p>Spicy Chaos Chicken Biryani Aesthetic Foodie Grunge Heatwave Plate Vibes
