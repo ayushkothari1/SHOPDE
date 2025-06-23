@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHOPDE for everything</title>
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="utilis.css" />
     <script
@@ -106,10 +112,36 @@
           </div>
         </div>
       </div>
-      <div class="section section2">
-        <!-- <h1>Clothes for you - </h1> -->
+      <div class="section section2" id="section2">
         <div class="shop-clothes">
-          <div>
+                    <form id="productForm" onsubmit="addProduct(event)">
+            <div class="mb-0">
+              <label for="exampleInputEmail1" class="form-label"
+                >Product Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="prName"
+                aria-describedby="emailHelp"
+              />
+            </div>
+                        <div class="mb-0">
+              <label for="exampleInputPassword1" class="form-label">About Product</label>
+              <input type="text" class="form-control" id="prAbout" />
+            </div>
+            <div class="mb-0">
+              <label for="exampleInputPassword1" class="form-label">img-link</label>
+              <input type="link" class="form-control" id="prLink" />
+            </div>
+                        <div class="mb-0">
+              <label for="exampleInputPassword1" class="form-label">Price</label>
+              <input type="number" class="form-control" id="prPrice" />
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+          </form>
+          <div id="ClotheBox">
             <div class="boxes">
               <h4>Edgy Aesthetic Clothing...</h4>
               <p>Unholy Grunge Aesthetic E-Girl E-Boy Teen Girls Men Women T-Shirt

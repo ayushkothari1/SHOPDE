@@ -1,3 +1,4 @@
+const header = document.querySelector("header");
 const listEl = document.querySelectorAll(".list");
 const sectionEl = document.querySelectorAll(".section");
 const activeSection = document.querySelector(".active-section");
@@ -68,14 +69,128 @@ listEl.forEach(function (list, index) {
 });
 // productToCartMap.set(box, clone);
 
-const productToCartMap = new Map();
 // console.log(productToCartMap);
 
+let productForm = document.getElementById("submit");
+
+const productToCartMap = new Map();
+let products = [];
+
+function renderProducts() {
+  let productWithBox = products.map((e) => {
+    return `  
+    <div class="boxes">
+    <h4>${e.pname}</h4>
+    <p>
+</p>
+<img src="${e.imlink}" alt="">
+<div class="money-cart">
+<div class="price">$ ${e.pprice}</div>
+<div class="add"><span class="addminus">ADD TO CART</span></div>
+</div>
+</div>
+`;
+  });
+  // const productToCartMap = new Map();
+  let ClotheBox = document.getElementById("ClotheBox");
+  ClotheBox.innerHTML = productWithBox.join("");
+  // const cartBoxes = document.querySelector(".cart-boxes");
+
+  const addButtons = document.querySelectorAll(".addminus");
+  addButtons.forEach((e) => {
+    e.addEventListener("click", function () {
+      const box = e.closest(".boxes");
+
+      if (e.classList.contains("minus")) {
+        showNotification("error", "Item removed from cart");
+        e.classList.remove("minus");
+        e.innerHTML = "ADD TO CART";
+        const cloneBox = productToCartMap.get(box);
+        // redSingnal.classList.add("red-signal");
+        if (cloneBox) {
+          removeFromCart(cloneBox);
+          productToCartMap.delete(box);
+        }
+      } else {
+        showNotification("success", "Item added to cart");
+        e.classList.add("minus");
+        e.innerHTML = "Remove Item";
+        addToCart(box);
+      }
+    });
+  });
+}
+// function addToproductcart(box) {
+//   const clone = box.cloneNode(true);
+//   const e = clone.querySelector(".addminus");
+//   e.classList.add("minus");
+//   e.innerHTML = "Remove Item";
+//   e.addEventListener("click", function () {
+//     e.classList.remove("minus");
+//     e.innerHTML = "ADD TO CART";
+//     removeFromCart(clone);
+
+//     const originalBtn = box.querySelector(".addminus");
+//     originalBtn.classList.remove("minus");
+//     originalBtn.innerHTML = "ADD TO CART";
+//     productToCartMap.delete(box);
+//   });
+//   cartBoxes.appendChild(clone);
+//   productToCartMap.set(box, clone);
+//   // const header = document.querySelector("header");
+
+//   let addcart = document.createElement("div");
+//   addcart.classList.add("green-signal");
+//   let i = document.createElement("i");
+//   i.classList.add("fa-solid", "fa-circle-check");
+//   addcart.appendChild(i);
+//   addcart.append(" Item added to cart");
+//   header.appendChild(addcart);
+// }
+
+// function removeToproductcart(box) {
+//   if (cartBoxes.contains(box)) {
+//     cartBoxes.removeChild(box);
+//   }
+//   // const header = document.querySelector("header");
+
+//   let removeCart = document.createElement("div");
+//   removeCart.classList.add("red-signal");
+//   let i = document.createElement("i");
+//   // removeCart.innerHTML = i + "Item removed from cart";
+//   i.classList.add("fa-solid", "fa-circle-xmark");
+//   removeCart.appendChild(i);
+//   removeCart.append(" Item removed from cart");
+//   header.appendChild(removeCart);
+// }
+renderProducts();
+
+function addProduct(e) {
+  console.log(e.target[0].value);
+  console.log(e.target[1].value);
+  console.log(e.target[2].value);
+  console.log(e.target[3].value);
+  e.preventDefault();
+  let convert = {
+    pname: e.target[0].value,
+    pabout: e.target[1].value,
+    imlink: e.target[2].value,
+    pprice: e.target[3].value,
+  };
+  products = [...products, convert];
+  renderProducts();
+  e.target[0].value = "";
+  e.target[1].value = "";
+  e.target[2].value = "";
+  e.target[3].value = "";
+}
 addminus.forEach(function (e) {
   e.addEventListener("click", function () {
     const box = e.closest(".boxes");
     if (e.classList.contains("minus")) {
       e.classList.remove("minus");
+      showNotification("error", "Item removed from cart");
+
       e.innerHTML = "ADD TO CART";
       const cloneBox = productToCartMap.get(box);
       // redSingnal.classList.add("red-signal");
@@ -84,6 +199,8 @@ addminus.forEach(function (e) {
         productToCartMap.delete(box);
       }
     } else {
+      showNotification("success", "Item added to cart");
+
       e.classList.add("minus");
       e.innerHTML = "Remove Item";
       addToCart(box);
@@ -108,31 +225,31 @@ function addToCart(box) {
   });
   cartBoxes.appendChild(clone);
   productToCartMap.set(box, clone);
-  const header = document.querySelector("header");
 
-  let addcart = document.createElement("div");
-  addcart.classList.add("green-signal");
-  let i = document.createElement("i");
-  i.classList.add("fa-solid", "fa-circle-check");
-  addcart.appendChild(i);
-  addcart.append(" Item added to cart");
-  header.appendChild(addcart);
+  // let addcart = document.createElement("div");
+  // addcart.classList.add("green-signal");
+  // let i = document.createElement("i");
+  // i.classList.add("fa-solid", "fa-circle-check");
+  // addcart.appendChild(i);
+  // addcart.append(" Item added to cart");
+  // header.appendChild(addcart);
 }
 
 function removeFromCart(box) {
   if (cartBoxes.contains(box)) {
     cartBoxes.removeChild(box);
+    showNotification("error", "Item removed from cart");
   }
-  const header = document.querySelector("header");
+  // const header = document.querySelector("header");
 
-  let removeCart = document.createElement("div");
-  removeCart.classList.add("red-signal");
-  let i = document.createElement("i");
-  // removeCart.innerHTML = i + "Item removed from cart";
-  i.classList.add("fa-solid", "fa-circle-xmark");
-  removeCart.appendChild(i);
-  removeCart.append(" Item removed from cart");
-  header.appendChild(removeCart);
+  // let removeCart = document.createElement("div");
+  // removeCart.classList.add("red-signal");
+  // let i = document.createElement("i");
+  // // removeCart.innerHTML = i + "Item removed from cart";
+  // i.classList.add("fa-solid", "fa-circle-xmark");
+  // removeCart.appendChild(i);
+  // removeCart.append(" Item removed from cart");
+  // header.appendChild(removeCart);
 }
 demo.addEventListener("click", function () {
   movie.style.display = "flex";
@@ -144,5 +261,19 @@ closeIcon.addEventListener("click", function () {
   Video.pause();
   Video.currentTime = 0;
 });
+
+function showNotification(type, message) {
+  const div = document.createElement("div");
+  div.classList.add(type === "success" ? "green-signal" : "red-signal");
+  const icon = document.createElement("i");
+  icon.classList.add(
+    "fa-solid",
+    type === "success" ? "fa-circle-check" : "fa-circle-xmark"
+  );
+  div.appendChild(icon);
+  div.append(" " + message);
+  header.appendChild(div);
+  setTimeout(() => div.remove(), 2000);
+}
 
 // function addToCart() {}
