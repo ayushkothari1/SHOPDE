@@ -83,7 +83,7 @@ function renderProducts() {
     return `
     <div class="boxes">
     <h4>${e.pname}</h4>
-    <p>
+    <p>${e.pabout}
 </p>
 <img src="${e.imlink}" alt="">
 <div class="money-cart">
@@ -196,7 +196,7 @@ function foodRenderProducts() {
   let foodwithBox = foodproducts.map((food) => {
     return `    <div class="boxes">
     <h4>${food.pname}</h4>
-    <p>
+    <p>${food.pabout}
     </p>
     <img src="${food.imlink}" alt="">
     <div class="money-cart">
@@ -207,6 +207,29 @@ function foodRenderProducts() {
   });
   let foodBox = document.getElementById("foodBox");
   foodBox.innerHTML = foodwithBox.join("");
+  const addButtons = document.querySelectorAll(".addminus");
+  addButtons.forEach((e) => {
+    e.addEventListener("click", function () {
+      const box = e.closest(".boxes");
+
+      if (e.classList.contains("minus")) {
+        showNotification("error", "Item removed from cart");
+        e.classList.remove("minus");
+        e.innerHTML = "ADD TO CART";
+        const cloneBox = productToCartMap.get(box);
+        // redSingnal.classList.add("red-signal");
+        if (cloneBox) {
+          removeFromCart(cloneBox);
+          productToCartMap.delete(box);
+        }
+      } else {
+        showNotification("success", "Item added to cart");
+        e.classList.add("minus");
+        e.innerHTML = "Remove Item";
+        addToCart(box);
+      }
+    });
+  });
 }
 
 function addfoodproduct(food) {
@@ -219,13 +242,146 @@ function addfoodproduct(food) {
   };
   foodRenderProducts();
   foodproducts = [...foodproducts, convert];
-  renderProducts();
+  // renderProducts();
   food.target[0].value = "";
   food.target[1].value = "";
   food.target[2].value = "";
   food.target[3].value = "";
 }
 foodRenderProducts();
+
+// food section ends
+
+// cosmatic section starts
+
+let cosmaticProducts = [];
+
+function cosmaticRenderProducts() {
+  let cosmaticwithBox = cosmaticProducts.map((cosmatic) => {
+    return `    <div class="boxes">
+    <h4>${cosmatic.pname}</h4>
+    <p>${cosmatic.pabout}
+    </p>
+    <img src="${cosmatic.imlink}" alt="">
+    <div class="money-cart">
+    <div class="price">$ ${cosmatic.pprice}</div>
+    <div class="add"><span class="addminus">ADD TO CART</span></div>
+    </div>
+    </div>`;
+  });
+  let cosmaticBox = document.getElementById("cosmaticBox");
+  cosmaticBox.innerHTML = cosmaticwithBox.join("");
+  const addButtons = document.querySelectorAll(".addminus");
+  addButtons.forEach((e) => {
+    e.addEventListener("click", function () {
+      const box = e.closest(".boxes");
+
+      if (e.classList.contains("minus")) {
+        showNotification("error", "Item removed from cart");
+        e.classList.remove("minus");
+        e.innerHTML = "ADD TO CART";
+        const cloneBox = productToCartMap.get(box);
+        // redSingnal.classList.add("red-signal");
+        if (cloneBox) {
+          removeFromCart(cloneBox);
+          productToCartMap.delete(box);
+        }
+      } else {
+        showNotification("success", "Item added to cart");
+        e.classList.add("minus");
+        e.innerHTML = "Remove Item";
+        addToCart(box);
+      }
+    });
+  });
+}
+
+function addcosmaticproduct(cosmatic) {
+  cosmatic.preventDefault();
+  let convert = {
+    pname: cosmatic.target[0].value,
+    pabout: cosmatic.target[1].value,
+    imlink: cosmatic.target[2].value,
+    pprice: cosmatic.target[3].value,
+  };
+  cosmaticRenderProducts();
+  cosmaticProducts = [...cosmaticProducts, convert];
+  // renderProducts();
+  cosmatic.target[0].value = "";
+  cosmatic.target[1].value = "";
+  cosmatic.target[2].value = "";
+  cosmatic.target[3].value = "";
+}
+cosmaticRenderProducts();
+
+// cosmatic section ends
+
+// furniture section starts
+
+let furnitureProducts = [];
+function furnitureRenderProducts() {
+  let furnitureWithBox = furnitureProducts.map((furniture) => {
+    return `    <div class="boxes">
+    <h4>${furniture.pname}</h4>
+    <p>${furniture.pabout}
+    </p>
+    <img src="${furniture.imlink}" alt="">
+    <div class="money-cart">
+    <div class="price">$ ${furniture.pprice}</div>
+    <div class="add"><span class="addminus">ADD TO CART</span></div>
+    </div>
+    </div>`;
+  });
+  let furnitureBox = document.getElementById("furnitureBox");
+  furnitureBox.innerHTML = furnitureWithBox.join("");
+
+  const addButtons = document.querySelectorAll(".addminus");
+  addButtons.forEach((e) => {
+    e.addEventListener("click", function () {
+      const box = e.closest(".boxes");
+
+      if (e.classList.contains("minus")) {
+        showNotification("error", "Item removed from cart");
+        e.classList.remove("minus");
+        e.innerHTML = "ADD TO CART";
+        const cloneBox = productToCartMap.get(box);
+        // redSingnal.classList.add("red-signal");
+        if (cloneBox) {
+          removeFromCart(cloneBox);
+          productToCartMap.delete(box);
+        }
+      } else {
+        showNotification("success", "Item added to cart");
+        e.classList.add("minus");
+        e.innerHTML = "Remove Item";
+        addToCart(box);
+      }
+    });
+  });
+}
+
+function addfurnitureProduct(furniture) {
+  furniture.preventDefault();
+  let convert = {
+    pname: furniture.target[0].value,
+    pabout: furniture.target[1].value,
+    imlink: furniture.target[2].value,
+    pprice: furniture.target[3].value,
+  };
+  console.log(furniture.target[0].value);
+
+  furnitureRenderProducts();
+  furnitureProducts = [...furnitureProducts, convert];
+  // renderProducts();
+  furniture.target[0].value = "";
+  furniture.target[1].value = "";
+  furniture.target[2].value = "";
+  furniture.target[3].value = "";
+}
+
+furnitureRenderProducts();
+
+// furniture section ends
 
 addminus.forEach(function (e) {
   e.addEventListener("click", function () {
