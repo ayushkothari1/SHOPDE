@@ -13,7 +13,7 @@ const welcome = document.querySelector(".welcome");
 const demo = document.querySelector(".demo");
 const movie = document.querySelector(".movie");
 const closeIcon = document.querySelector(".close-icon");
-const addminus = document.querySelectorAll(".addminus");
+const addButtons = document.querySelectorAll(".addminus");
 const Video = document.querySelector("video");
 // const header = document.querySelector("header");
 const greenSignal = document.querySelector(".greenS");
@@ -85,9 +85,9 @@ loadAllProducts();
 loadCartItems();
 
 function renderProducts() {
-  let productWithBox = products.map((e) => {
+  let productWithBox = products.map((e, i) => {
     return `
-    <div class="boxes">
+    <div class="boxes" data-index="${i}">
     <h4>${e.pname}</h4>
     <p>${e.pabout}
 </p>
@@ -96,7 +96,7 @@ function renderProducts() {
 <div class="price">$ ${e.pprice}</div>
 <div class="add"><span class="addminus">ADD TO CART</span></div>
 </div>
-      <button class="delete-product">🗑 Delete</button>
+<button type="button" class="btn btn-dark delete-product">Dark</button>
 
 </div>
 `;
@@ -105,8 +105,8 @@ function renderProducts() {
   let ClotheBox = document.getElementById("ClotheBox");
   ClotheBox.innerHTML = productWithBox.join("");
   // const cartBoxes = document.querySelector(".cart-boxes");
+  const addButtons = ClotheBox.querySelectorAll(".addminus");
 
-  const addButtons = document.querySelectorAll(".addminus");
   addButtons.forEach((e) => {
     e.addEventListener("click", function () {
       const box = e.closest(".boxes");
@@ -141,49 +141,49 @@ function renderProducts() {
     });
   });
 }
-function addToproductcart(box) {
-  const clone = box.cloneNode(true);
-  const e = clone.querySelector(".addminus");
-  e.classList.add("minus");
-  e.innerHTML = "Remove Item";
-  e.addEventListener("click", function () {
-    e.classList.remove("minus");
-    e.innerHTML = "ADD TO CART";
-    removeFromCart(clone);
+// function addToproductcart(box) {
+//   const clone = box.cloneNode(true);
+//   const e = clone.querySelector(".addminus");
+//   e.classList.add("minus");
+//   e.innerHTML = "Remove Item";
+//   e.addEventListener("click", function () {
+//     e.classList.remove("minus");
+//     e.innerHTML = "ADD TO CART";
+//     removeFromCart(clone);
 
-    const originalBtn = box.querySelector(".addminus");
-    originalBtn.classList.remove("minus");
-    originalBtn.innerHTML = "ADD TO CART";
-    productToCartMap.delete(box);
-  });
-  cartBoxes.appendChild(clone);
-  productToCartMap.set(box, clone);
-  // const header = document.querySelector("header");
+//     const originalBtn = box.querySelector(".addminus");
+//     originalBtn.classList.remove("minus");
+//     originalBtn.innerHTML = "ADD TO CART";
+//     productToCartMap.delete(box);
+//   });
+//   cartBoxes.appendChild(clone);
+//   productToCartMap.set(box, clone);
+//   // const header = document.querySelector("header");
 
-  let addcart = document.createElement("div");
-  addcart.classList.add("green-signal");
-  let i = document.createElement("i");
-  i.classList.add("fa-solid", "fa-circle-check");
-  addcart.appendChild(i);
-  addcart.append(" Item added to cart");
-  header.appendChild(addcart);
-}
+//   let addcart = document.createElement("div");
+//   addcart.classList.add("green-signal");
+//   let i = document.createElement("i");
+//   i.classList.add("fa-solid", "fa-circle-check");
+//   addcart.appendChild(i);
+//   addcart.append(" Item added to cart");
+//   header.appendChild(addcart);
+// }
 
-function removeToproductcart(box) {
-  if (cartBoxes.contains(box)) {
-    cartBoxes.removeChild(box);
-  }
-  // const header = document.querySelector("header");
+// function removeToproductcart(box) {
+//   if (cartBoxes.contains(box)) {
+//     cartBoxes.removeChild(box);
+//   }
+//   // const header = document.querySelector("header");
 
-  let removeCart = document.createElement("div");
-  removeCart.classList.add("red-signal");
-  let i = document.createElement("i");
-  // removeCart.innerHTML = i + "Item removed from cart";
-  i.classList.add("fa-solid", "fa-circle-xmark");
-  removeCart.appendChild(i);
-  removeCart.append(" Item removed from cart");
-  header.appendChild(removeCart);
-}
+//   let removeCart = document.createElement("div");
+//   removeCart.classList.add("red-signal");
+//   let i = document.createElement("i");
+//   // removeCart.innerHTML = i + "Item removed from cart";
+//   i.classList.add("fa-solid", "fa-circle-xmark");
+//   removeCart.appendChild(i);
+//   removeCart.append(" Item removed from cart");
+//   header.appendChild(removeCart);
+// }
 renderProducts();
 
 function addProduct(e) {
@@ -212,8 +212,8 @@ function addProduct(e) {
 // let foodToCartMap = new Map();
 
 function foodRenderProducts() {
-  let foodwithBox = foodproducts.map((food) => {
-    return `    <div class="boxes">
+  let foodwithBox = foodproducts.map((food, i) => {
+    return `    <div class="boxes" data-index="${i}">
     <h4>${food.pname}</h4>
     <p>${food.pabout}
     </p>
@@ -222,13 +222,13 @@ function foodRenderProducts() {
     <div class="price">$ ${food.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
     </div>
-          <button class="delete-product">🗑 Delete</button>
+<button type="button" class="btn btn-dark delete-product">Dark</button>
 
     </div>`;
   });
   let foodBox = document.getElementById("foodBox");
   foodBox.innerHTML = foodwithBox.join("");
-  const addButtons = document.querySelectorAll(".addminus");
+  const addButtons = foodBox.querySelectorAll(".addminus");
   addButtons.forEach((e) => {
     e.addEventListener("click", function () {
       const box = e.closest(".boxes");
@@ -289,8 +289,8 @@ foodRenderProducts();
 // cosmatic section starts
 
 function cosmaticRenderProducts() {
-  let cosmaticwithBox = cosmaticProducts.map((cosmatic) => {
-    return `    <div class="boxes">
+  let cosmaticwithBox = cosmaticProducts.map((cosmatic, i) => {
+    return `    <div class="boxes" data-index="${i}">
     <h4>${cosmatic.pname}</h4>
     <p>${cosmatic.pabout}
     </p>
@@ -300,13 +300,13 @@ function cosmaticRenderProducts() {
     <div class="add"><span class="addminus">ADD TO CART</span></div>
 
     </div>
-          <button class="delete-product">🗑 Delete</button>
+<button type="button" class="btn btn-dark delete-product">Dark</button>
 
     </div>`;
   });
   let cosmaticBox = document.getElementById("cosmaticBox");
   cosmaticBox.innerHTML = cosmaticwithBox.join("");
-  const addButtons = document.querySelectorAll(".addminus");
+  const addButtons = cosmaticBox.querySelectorAll(".addminus");
   addButtons.forEach((e) => {
     e.addEventListener("click", function () {
       const box = e.closest(".boxes");
@@ -367,8 +367,8 @@ cosmaticRenderProducts();
 // furniture section starts
 
 function furnitureRenderProducts() {
-  let furnitureWithBox = furnitureProducts.map((furniture) => {
-    return `    <div class="boxes">
+  let furnitureWithBox = furnitureProducts.map((furniture, i) => {
+    return `    <div class="boxes" data-index="${i}">
     <h4>${furniture.pname}</h4>
     <p>${furniture.pabout}
     </p>
@@ -377,14 +377,14 @@ function furnitureRenderProducts() {
     <div class="price">$ ${furniture.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
     </div>
-          <button class="delete-product">🗑 Delete</button>
+<button type="button" class="btn btn-dark delete-product">Dark</button>
 
     </div>`;
   });
   let furnitureBox = document.getElementById("furnitureBox");
   furnitureBox.innerHTML = furnitureWithBox.join("");
 
-  const addButtons = document.querySelectorAll(".addminus");
+  const addButtons = furnitureBox.querySelectorAll(".addminus");
   addButtons.forEach((e) => {
     e.addEventListener("click", function () {
       const box = e.closest(".boxes");
@@ -444,29 +444,29 @@ furnitureRenderProducts();
 
 // furniture section ends
 
-addminus.forEach(function (e) {
-  e.addEventListener("click", function () {
-    const box = e.closest(".boxes");
-    if (e.classList.contains("minus")) {
-      e.classList.remove("minus");
-      showNotification("error", "Item removed from cart");
+// addminus.forEach(function (e) {
+//   e.addEventListener("click", function () {
+//     const box = e.closest(".boxes");
+//     if (e.classList.contains("minus")) {
+//       e.classList.remove("minus");
+//       showNotification("error", "Item removed from cart");
 
-      e.innerHTML = "ADD TO CART";
-      const cloneBox = productToCartMap.get(box);
-      // redSingnal.classList.add("red-signal");
-      if (cloneBox) {
-        removeFromCart(cloneBox);
-        productToCartMap.delete(box);
-      }
-    } else {
-      showNotification("success", "Item added to cart");
+//       e.innerHTML = "ADD TO CART";
+//       const cloneBox = productToCartMap.get(box);
+//       // redSingnal.classList.add("red-signal");
+//       if (cloneBox) {
+//         removeFromCart(cloneBox);
+//         productToCartMap.delete(box);
+//       }
+//     } else {
+//       showNotification("success", "Item added to cart");
 
-      e.classList.add("minus");
-      e.innerHTML = "Remove Item";
-      addToCart(box);
-    }
-  });
-});
+//       e.classList.add("minus");
+//       e.innerHTML = "Remove Item";
+//       addToCart(box);
+//     }
+//   });
+// });
 
 function addToCart(box) {
   const clone = box.cloneNode(true);
@@ -548,6 +548,8 @@ function loadAllProducts() {
   foodRenderProducts();
   cosmaticRenderProducts();
   furnitureRenderProducts();
+
+  loadCartItems();
 }
 
 // --- 3. Save cart to localStorage ---
@@ -572,9 +574,38 @@ function updateCartStorage() {
 function loadCartItems() {
   const items = JSON.parse(localStorage.getItem("cartItems")) || [];
   items.forEach((item) => {
-    const box = document.createElement("div");
-    box.classList.add("boxes");
-    box.innerHTML = `
+    // Find matching box in DOM
+    const originalBoxes = document.querySelectorAll(".boxes");
+    let matchedOriginalBox = null;
+
+    originalBoxes.forEach((b) => {
+      const name = b.querySelector("h4")?.innerText;
+      const about = b.querySelector("p")?.innerText;
+      const price = b
+        .querySelector(".price")
+        ?.innerText.replace("$", "")
+        .trim();
+      const img = b.querySelector("img")?.src;
+
+      if (
+        name === item.pname &&
+        about === item.pabout &&
+        price === item.pprice &&
+        img === item.imlink
+      ) {
+        matchedOriginalBox = b;
+        const btn = b.querySelector(".addminus");
+        if (btn) {
+          btn.classList.add("minus");
+          btn.innerText = "Remove Item";
+        }
+      }
+    });
+
+    // Create clone box for cart
+    const cloneBox = document.createElement("div");
+    cloneBox.classList.add("boxes");
+    cloneBox.innerHTML = `
       <h4>${item.pname}</h4>
       <p>${item.pabout}</p>
       <img src="${item.imlink}" alt="">
@@ -583,16 +614,44 @@ function loadCartItems() {
         <div class="add"><span class="addminus minus">Remove Item</span></div>
       </div>
     `;
-    const btn = box.querySelector(".addminus");
+
+    const btn = cloneBox.querySelector(".addminus");
     btn.addEventListener("click", function () {
       btn.classList.remove("minus");
       btn.innerHTML = "ADD TO CART";
-      removeFromCart(box);
+      removeFromCart(cloneBox);
+
+      if (matchedOriginalBox) {
+        const originalBtn = matchedOriginalBox.querySelector(".addminus");
+        if (originalBtn) {
+          originalBtn.classList.remove("minus");
+          originalBtn.innerText = "ADD TO CART";
+        }
+        productToCartMap.delete(matchedOriginalBox);
+      }
+
       updateCartStorage();
     });
-    cartBoxes.appendChild(box);
+
+    cartBoxes.appendChild(cloneBox);
+
+    // ✅ Reconnect map
+    if (matchedOriginalBox) {
+      productToCartMap.set(matchedOriginalBox, cloneBox);
+    }
   });
 }
+
+// function updateCartTotal() {
+//   let total = 0;
+//   cartBoxes.querySelectorAll(".boxes").forEach((box) => {
+//     const price = parseFloat(
+//       box.querySelector(".price").textContent.replace("$", "")
+//     );
+//     total += price;
+//   });
+//   document.getElementById("cartTotal").textContent = `Total: $${total}`;
+// }
 
 demo.addEventListener("click", function () {
   movie.style.display = "flex";
