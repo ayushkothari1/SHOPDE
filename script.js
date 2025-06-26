@@ -77,6 +77,12 @@ let productForm = document.getElementById("submit");
 
 const productToCartMap = new Map();
 let products = [];
+let foodproducts = [];
+let furnitureProducts = [];
+let cosmaticProducts = [];
+
+loadAllProducts();
+loadCartItems();
 
 function renderProducts() {
   let productWithBox = products.map((e) => {
@@ -90,6 +96,8 @@ function renderProducts() {
 <div class="price">$ ${e.pprice}</div>
 <div class="add"><span class="addminus">ADD TO CART</span></div>
 </div>
+      <button class="delete-product">🗑 Delete</button>
+
 </div>
 `;
   });
@@ -119,6 +127,17 @@ function renderProducts() {
         e.innerHTML = "Remove Item";
         addToCart(box);
       }
+    });
+  });
+
+  const deleteButtons = ClotheBox.querySelectorAll(".delete-product");
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const box = btn.closest(".boxes");
+      const index = parseInt(box.getAttribute("data-index"));
+      products.splice(index, 1); // ✅ delete the correct product
+      saveAllProducts();
+      renderProducts(); // re-render updated list
     });
   });
 }
@@ -181,6 +200,7 @@ function addProduct(e) {
   };
   products = [...products, convert];
   renderProducts();
+  saveAllProducts();
   e.target[0].value = "";
   e.target[1].value = "";
   e.target[2].value = "";
@@ -190,7 +210,6 @@ function addProduct(e) {
 // food section
 
 // let foodToCartMap = new Map();
-let foodproducts = [];
 
 function foodRenderProducts() {
   let foodwithBox = foodproducts.map((food) => {
@@ -203,6 +222,8 @@ function foodRenderProducts() {
     <div class="price">$ ${food.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
     </div>
+          <button class="delete-product">🗑 Delete</button>
+
     </div>`;
   });
   let foodBox = document.getElementById("foodBox");
@@ -230,6 +251,17 @@ function foodRenderProducts() {
       }
     });
   });
+
+  const deleteButtons = foodBox.querySelectorAll(".delete-product");
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const box = btn.closest(".boxes");
+      const index = parseInt(box.getAttribute("data-index"));
+      foodproducts.splice(index, 1); // ✅ delete the correct product
+      saveAllProducts();
+      foodRenderProducts(); // re-render updated list
+    });
+  });
 }
 
 function addfoodproduct(food) {
@@ -240,21 +272,21 @@ function addfoodproduct(food) {
     imlink: food.target[2].value,
     pprice: food.target[3].value,
   };
-  foodRenderProducts();
   foodproducts = [...foodproducts, convert];
+  foodRenderProducts();
+  saveAllProducts();
   // renderProducts();
   food.target[0].value = "";
   food.target[1].value = "";
   food.target[2].value = "";
   food.target[3].value = "";
 }
+
 foodRenderProducts();
 
 // food section ends
 
 // cosmatic section starts
-
-let cosmaticProducts = [];
 
 function cosmaticRenderProducts() {
   let cosmaticwithBox = cosmaticProducts.map((cosmatic) => {
@@ -266,7 +298,10 @@ function cosmaticRenderProducts() {
     <div class="money-cart">
     <div class="price">$ ${cosmatic.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
+
     </div>
+          <button class="delete-product">🗑 Delete</button>
+
     </div>`;
   });
   let cosmaticBox = document.getElementById("cosmaticBox");
@@ -294,6 +329,17 @@ function cosmaticRenderProducts() {
       }
     });
   });
+
+  const deleteButtons = cosmaticBox.querySelectorAll(".delete-product");
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const box = btn.closest(".boxes");
+      const index = parseInt(box.getAttribute("data-index"));
+      cosmaticProducts.splice(index, 1); // ✅ delete the correct product
+      saveAllProducts();
+      cosmaticRenderProducts(); // re-render updated list
+    });
+  });
 }
 
 function addcosmaticproduct(cosmatic) {
@@ -304,8 +350,10 @@ function addcosmaticproduct(cosmatic) {
     imlink: cosmatic.target[2].value,
     pprice: cosmatic.target[3].value,
   };
-  cosmaticRenderProducts();
+
   cosmaticProducts = [...cosmaticProducts, convert];
+  cosmaticRenderProducts();
+  saveAllProducts();
   // renderProducts();
   cosmatic.target[0].value = "";
   cosmatic.target[1].value = "";
@@ -318,7 +366,6 @@ cosmaticRenderProducts();
 
 // furniture section starts
 
-let furnitureProducts = [];
 function furnitureRenderProducts() {
   let furnitureWithBox = furnitureProducts.map((furniture) => {
     return `    <div class="boxes">
@@ -330,6 +377,8 @@ function furnitureRenderProducts() {
     <div class="price">$ ${furniture.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
     </div>
+          <button class="delete-product">🗑 Delete</button>
+
     </div>`;
   });
   let furnitureBox = document.getElementById("furnitureBox");
@@ -358,6 +407,17 @@ function furnitureRenderProducts() {
       }
     });
   });
+
+  const deleteButtons = furnitureBox.querySelectorAll(".delete-product");
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const box = btn.closest(".boxes");
+      const index = parseInt(box.getAttribute("data-index"));
+      furnitureProducts.splice(index, 1); // ✅ delete the correct product
+      saveAllProducts();
+      furnitureRenderProducts(); // re-render updated list
+    });
+  });
 }
 
 function addfurnitureProduct(furniture) {
@@ -370,8 +430,9 @@ function addfurnitureProduct(furniture) {
   };
   console.log(furniture.target[0].value);
 
-  furnitureRenderProducts();
   furnitureProducts = [...furnitureProducts, convert];
+  furnitureRenderProducts();
+  saveAllProducts();
   // renderProducts();
   furniture.target[0].value = "";
   furniture.target[1].value = "";
@@ -421,9 +482,11 @@ function addToCart(box) {
     originalBtn.classList.remove("minus");
     originalBtn.innerHTML = "ADD TO CART";
     productToCartMap.delete(box);
+    updateCartStorage();
   });
   cartBoxes.appendChild(clone);
   productToCartMap.set(box, clone);
+  updateCartStorage();
 
   let addcart = document.createElement("div");
   addcart.classList.add("green-signal");
@@ -437,6 +500,7 @@ function addToCart(box) {
 function removeFromCart(box) {
   if (cartBoxes.contains(box)) {
     cartBoxes.removeChild(box);
+    updateCartStorage();
     showNotification("error", "Item removed from cart");
   }
   // const header = document.querySelector("header");
@@ -450,17 +514,6 @@ function removeFromCart(box) {
   removeCart.append(" Item removed from cart");
   header.appendChild(removeCart);
 }
-demo.addEventListener("click", function () {
-  movie.style.display = "flex";
-  // shoping.style.visibility = "hidden";
-});
-
-closeIcon.addEventListener("click", function () {
-  movie.style.display = "none";
-  Video.pause();
-  Video.currentTime = 0;
-});
-
 function showNotification(type, message) {
   const div = document.createElement("div");
   div.classList.add(type === "success" ? "green-signal" : "red-signal");
@@ -474,5 +527,82 @@ function showNotification(type, message) {
   header.appendChild(div);
   setTimeout(() => div.remove(), 2000);
 }
+
+function saveAllProducts() {
+  localStorage.setItem("clothesProducts", JSON.stringify(products));
+  localStorage.setItem("foodProducts", JSON.stringify(foodproducts));
+  localStorage.setItem("cosmaticProducts", JSON.stringify(cosmaticProducts));
+  localStorage.setItem("furnitureProducts", JSON.stringify(furnitureProducts));
+}
+
+// --- 2. Load all product arrays from localStorage at start ---
+
+function loadAllProducts() {
+  products = JSON.parse(localStorage.getItem("clothesProducts")) || [];
+  foodproducts = JSON.parse(localStorage.getItem("foodProducts")) || [];
+  cosmaticProducts = JSON.parse(localStorage.getItem("cosmaticProducts")) || [];
+  furnitureProducts =
+    JSON.parse(localStorage.getItem("furnitureProducts")) || [];
+
+  renderProducts();
+  foodRenderProducts();
+  cosmaticRenderProducts();
+  furnitureRenderProducts();
+}
+
+// --- 3. Save cart to localStorage ---
+
+function updateCartStorage() {
+  const items = [];
+  productToCartMap.forEach((cloneBox, originalBox) => {
+    const pname = originalBox.querySelector("h4").innerText;
+    const pabout = originalBox.querySelector("p").innerText;
+    const imlink = originalBox.querySelector("img").src;
+    const pprice = originalBox
+      .querySelector(".price")
+      .innerText.replace("$", "")
+      .trim();
+    items.push({ pname, pabout, imlink, pprice });
+  });
+  localStorage.setItem("cartItems", JSON.stringify(items));
+}
+
+// --- 4. Load cart from localStorage on page load ---
+
+function loadCartItems() {
+  const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+  items.forEach((item) => {
+    const box = document.createElement("div");
+    box.classList.add("boxes");
+    box.innerHTML = `
+      <h4>${item.pname}</h4>
+      <p>${item.pabout}</p>
+      <img src="${item.imlink}" alt="">
+      <div class="money-cart">
+        <div class="price">$ ${item.pprice}</div>
+        <div class="add"><span class="addminus minus">Remove Item</span></div>
+      </div>
+    `;
+    const btn = box.querySelector(".addminus");
+    btn.addEventListener("click", function () {
+      btn.classList.remove("minus");
+      btn.innerHTML = "ADD TO CART";
+      removeFromCart(box);
+      updateCartStorage();
+    });
+    cartBoxes.appendChild(box);
+  });
+}
+
+demo.addEventListener("click", function () {
+  movie.style.display = "flex";
+  // shoping.style.visibility = "hidden";
+});
+
+closeIcon.addEventListener("click", function () {
+  movie.style.display = "none";
+  Video.pause();
+  Video.currentTime = 0;
+});
 
 // function addToCart() {}
