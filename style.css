@@ -506,12 +506,9 @@ header nav ul {
   font-size: 14px;
 }
 
-/* .delete-product {
-  padding: 8px;
-  width: 50%;
-  background: blue;
-  border: 2px solid rgb(4, 4, 74);
-} */
+.delete-product {
+  margin-right: 14%;
+}
 /* boxes styling ends------------ */
 
 /* ------------- section2 ends -------------- */

@@ -96,7 +96,7 @@ function renderProducts() {
 <div class="price">$ ${e.pprice}</div>
 <div class="add"><span class="addminus">ADD TO CART</span></div>
 </div>
-<button type="button" class="btn btn-dark delete-product">Dark</button>
+<button type="button" class="btn btn-dark delete-product">Delete</button>
 
 </div>
 `;
@@ -222,7 +222,7 @@ function foodRenderProducts() {
     <div class="price">$ ${food.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
     </div>
-<button type="button" class="btn btn-dark delete-product">Dark</button>
+<button type="button" class="btn btn-dark delete-product">Delete</button>
 
     </div>`;
   });
@@ -300,7 +300,7 @@ function cosmaticRenderProducts() {
     <div class="add"><span class="addminus">ADD TO CART</span></div>
 
     </div>
-<button type="button" class="btn btn-dark delete-product">Dark</button>
+<button type="button" class="btn btn-dark delete-product">Delete</button>
 
     </div>`;
   });
@@ -377,7 +377,7 @@ function furnitureRenderProducts() {
     <div class="price">$ ${furniture.pprice}</div>
     <div class="add"><span class="addminus">ADD TO CART</span></div>
     </div>
-<button type="button" class="btn btn-dark delete-product">Dark</button>
+<button type="button" class="btn btn-dark delete-product">Delete</button>
 
     </div>`;
   });
