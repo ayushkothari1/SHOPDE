@@ -91,7 +91,7 @@
   }
 } */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
   header {
     /* flex-direction: column; */
     height: auto;
@@ -118,18 +118,31 @@
   .list {
     font-size: 0.9rem;
   }
-}
-
-@media screen and (max-width: 480px) {
-  .logo {
-    font-size: 1.75rem;
+  .section1 .shoping .one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
   }
 
-  .list {
-    font-size: 0.7rem;
+  .section1 .shoping .one h1 {
+    color: rgb(7, 7, 38);
+    font-size: 2rem;
+    word-spacing: 2px;
+  }
+  .section1 .shoping .one p {
+    font-size: 1.2rem;
+    margin: 10px 0 0 36px;
+    color: goldenrod;
+  }
+  .section1 .shoping .one .demo {
+    margin-top: 4%;
+    margin-left: 20%;
   }
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 797px) {
   header {
     flex-direction: column;
     height: auto;
@@ -143,6 +156,7 @@
   }
 
   nav {
+    /* display: none; */
     width: 100%;
   }
 
@@ -155,6 +169,27 @@
 
   .list {
     font-size: 1rem;
+  }
+
+  .shop-clothes div {
+    margin: 2% 10% 0%;
+    padding-bottom: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    /* background: yellow; */
+  }
+
+  .boxes {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 17px;
+    box-shadow: 1px 0.5px 6px rgb(102, 97, 97);
+    display: flex;
+    flex-wrap: wrap;
+    /* max-width: 200px; */
+    border: 3px solid black;
+    /* cursor: alias; */
   }
 }
 

@@ -82,7 +82,7 @@ let furnitureProducts = [];
 let cosmaticProducts = [];
 
 loadAllProducts();
-loadCartItems();
+// loadCartItems();
 
 function renderProducts() {
   let productWithBox = products.map((e, i) => {
@@ -184,7 +184,7 @@ function renderProducts() {
 //   removeCart.append(" Item removed from cart");
 //   header.appendChild(removeCart);
 // }
-renderProducts();
+// renderProducts();
 
 function addProduct(e) {
   console.log(e.target[0].value);
@@ -282,7 +282,7 @@ function addfoodproduct(food) {
   food.target[3].value = "";
 }
 
-foodRenderProducts();
+// foodRenderProducts();
 
 // food section ends
 
@@ -360,7 +360,7 @@ function addcosmaticproduct(cosmatic) {
   cosmatic.target[2].value = "";
   cosmatic.target[3].value = "";
 }
-cosmaticRenderProducts();
+// cosmaticRenderProducts();
 
 // cosmatic section ends
 
@@ -440,7 +440,7 @@ function addfurnitureProduct(furniture) {
   furniture.target[3].value = "";
 }
 
-furnitureRenderProducts();
+// furnitureRenderProducts();
 
 // furniture section ends
 
