@@ -114,33 +114,40 @@
       </div>
       <div class="section section2" id="section2">
         <div class="shop-clothes">
-                    <form id="productForm" onsubmit="addProduct(event)">
-            <div class="mb-0">
-              <label for="exampleInputEmail1" class="form-label"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="prName"
-                aria-describedby="emailHelp"
-              />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword1" class="form-label">About Product</label>
-              <input type="text" class="form-control" id="prAbout" />
-            </div>
-            <div class="mb-0">
-              <label for="exampleInputPassword1" class="form-label">img-link</label>
-              <input type="link" class="form-control" id="prLink" />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword1" class="form-label">Price</label>
-              <input type="number" class="form-control" id="prPrice" />
-            </div>
-            
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-          </form>
+                   <div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form id="productForm" onsubmit="addProduct(event)" class="p-4 border rounded shadow-sm bg-light">
+        <h4 class="text-center mb-4">Add New Product</h4>
+
+        <div class="mb-2">
+          <label for="prName" class="form-label text-dark fw-bold">Product Name</label>
+          <input type="text" class="form-control" id="prName" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prAbout" class="form-label text-dark fw-bold">About Product</label>
+          <input type="text" class="form-control" id="prAbout" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prLink" class="form-label text-dark fw-bold">Image Link</label>
+          <input type="url" class="form-control" id="prLink" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="prPrice" class="form-label text-dark fw-bold">Price ($)</label>
+          <input type="number" class="form-control" id="prPrice" min="0" step="0.01" required />
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-5">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
           <div id="ClotheBox">
             <div class="boxes">
               <h4>Edgy Aesthetic Clothing...</h4>
@@ -223,33 +230,39 @@
       </div>
       <div class="section section3">
         <div class="shop-clothes">
-                              <form id="foodform" onsubmit="addfoodproduct(event)">
-            <div class="mb-0">
-              <label for="exampleInputEmail2" class="form-label"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="foodName"
-                aria-describedby="emailHelp"
-              />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword2" class="form-label">About Product</label>
-              <input type="text" class="form-control" id="foodAbout" />
-            </div>
-            <div class="mb-0">
-              <label for="exampleInputPassword2" class="form-label">img-link</label>
-              <input type="link" class="form-control" id="foodLink" />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword2" class="form-label">Price</label>
-              <input type="number" class="form-control" id="foodprice" />
-            </div>
-            
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-          </form>
+                              <div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form id="productForm" onsubmit="addfoodproduct(event)" class="p-4 border rounded shadow-sm bg-light">
+        <h4 class="text-center mb-4">Add New Product</h4>
+
+        <div class="mb-2">
+          <label for="prName" class="form-label text-dark fw-bold">Product Name</label>
+          <input type="text" class="form-control" id="prName" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prAbout" class="form-label text-dark fw-bold">About Product</label>
+          <input type="text" class="form-control" id="prAbout" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prLink" class="form-label text-dark fw-bold">Image Link</label>
+          <input type="url" class="form-control" id="prLink" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="prPrice" class="form-label text-dark fw-bold">Price ($)</label>
+          <input type="number" class="form-control" id="prPrice" min="0" step="0.01" required />
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-5">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
           <div id="foodBox">
             <div class="boxes">
               <h4>Chicken Biryani ...</h4>
@@ -337,33 +350,39 @@
         </div>
       </div>
       <div class="section section4"><div class="shop-clothes">
-                         <form id="cosmaticform" onsubmit="addcosmaticproduct(event)">
-            <div class="mb-0">
-              <label for="exampleInputEmail3" class="form-label"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="foodName"
-                aria-describedby="emailHelp"
-              />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword3" class="form-label">About Product</label>
-              <input type="text" class="form-control" id="foodAbout" />
-            </div>
-            <div class="mb-0">
-              <label for="exampleInputPassword3" class="form-label">img-link</label>
-              <input type="link" class="form-control" id="foodLink" />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword3" class="form-label">Price</label>
-              <input type="number" class="form-control" id="foodprice" />
-            </div>
-            
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-          </form>
+                         <div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form id="productForm" onsubmit="addcosmaticproduct(event)" class="p-4 border rounded shadow-sm bg-light">
+        <h4 class="text-center mb-4">Add New Product</h4>
+
+        <div class="mb-2">
+          <label for="prName" class="form-label text-dark fw-bold">Product Name</label>
+          <input type="text" class="form-control" id="prName" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prAbout" class="form-label text-dark fw-bold">About Product</label>
+          <input type="text" class="form-control" id="prAbout" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prLink" class="form-label text-dark fw-bold">Image Link</label>
+          <input type="url" class="form-control" id="prLink" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="prPrice" class="form-label text-dark fw-bold">Price ($)</label>
+          <input type="number" class="form-control" id="prPrice" min="0" step="0.01" required />
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-5">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
           <div id="cosmaticBox">
             <div class="boxes">
               <h4>Matte Lipistic...</h4>
@@ -428,33 +447,39 @@
       <div class="section section5">
         
         <div class="shop-clothes">
-                           <form id="furnitureform" onsubmit="addfurnitureProduct(event)">
-            <div class="mb-0">
-              <label for="exampleInputEmail4" class="form-label"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="foodName"
-                aria-describedby="emailHelp"
-              />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword4" class="form-label">About Product</label>
-              <input type="text" class="form-control" id="foodAbout" />
-            </div>
-            <div class="mb-0">
-              <label for="exampleInputPassword4" class="form-label">img-link</label>
-              <input type="link" class="form-control" id="foodLink" />
-            </div>
-                        <div class="mb-0">
-              <label for="exampleInputPassword4" class="form-label">Price</label>
-              <input type="number" class="form-control" id="foodprice" />
-            </div>
-            
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-          </form>
+                           <div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form id="productForm" onsubmit="addfurnitureProduct(event)" class="p-4 border rounded shadow-sm bg-light">
+        <h4 class="text-center mb-4">Add New Product</h4>
+
+        <div class="mb-2">
+          <label for="prName" class="form-label text-dark fw-bold">Product Name</label>
+          <input type="text" class="form-control" id="prName" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prAbout" class="form-label text-dark fw-bold">About Product</label>
+          <input type="text" class="form-control" id="prAbout" required />
+        </div>
+
+        <div class="mb-2">
+          <label for="prLink" class="form-label text-dark fw-bold">Image Link</label>
+          <input type="url" class="form-control" id="prLink" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="prPrice" class="form-label text-dark fw-bold">Price ($)</label>
+          <input type="number" class="form-control" id="prPrice" min="0" step="0.01" required />
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-5">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
           <div id="furnitureBox">
             <div class="boxes">
               <h4>Corner Sofa ...</h4>
