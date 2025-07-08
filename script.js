@@ -73,15 +73,15 @@ listEl.forEach(function (list, index) {
 
 //clothes section
 
-let productForm = document.getElementById("submit");
+// let productForm = document.getElementById("submit");
 
 const productToCartMap = new Map();
 let products = [];
-let foodproducts = [];
-let furnitureProducts = [];
-let cosmaticProducts = [];
+// let foodproducts = [];
+// let furnitureProducts = [];
+// let cosmaticProducts = [];
 
-loadAllProducts();
+// loadAllProducts();
 // loadCartItems();
 
 function renderProducts() {
@@ -102,10 +102,10 @@ function renderProducts() {
 `;
   });
   // const productToCartMap = new Map();
-  let ClotheBox = document.getElementById("ClotheBox");
-  ClotheBox.innerHTML = productWithBox.join("");
+  let myProductBox = document.getElementById("myProductBox");
+  myProductBox.innerHTML = productWithBox.join("");
   // const cartBoxes = document.querySelector(".cart-boxes");
-  const addButtons = ClotheBox.querySelectorAll(".addminus");
+  const addButtons = myProductBox.querySelectorAll(".addminus");
 
   addButtons.forEach((e) => {
     e.addEventListener("click", function () {
@@ -136,7 +136,7 @@ function renderProducts() {
       const box = btn.closest(".boxes");
       const index = parseInt(box.getAttribute("data-index"));
       products.splice(index, 1); // ✅ delete the correct product
-      saveAllProducts();
+      // saveAllProducts();
       renderProducts(); // re-render updated list
     });
   });
@@ -186,7 +186,7 @@ function renderProducts() {
 // }
 // renderProducts();
 
-function addProduct(e) {
+function addYourProduct(e) {
   console.log(e.target[0].value);
   console.log(e.target[1].value);
   console.log(e.target[2].value);
@@ -200,7 +200,7 @@ function addProduct(e) {
   };
   products = [...products, convert];
   renderProducts();
-  saveAllProducts();
+  // saveAllProducts();
   e.target[0].value = "";
   e.target[1].value = "";
   e.target[2].value = "";
@@ -211,76 +211,76 @@ function addProduct(e) {
 
 // let foodToCartMap = new Map();
 
-function foodRenderProducts() {
-  let foodwithBox = foodproducts.map((food, i) => {
-    return `    <div class="boxes" data-index="${i}">
-    <h4>${food.pname}</h4>
-    <p>${food.pabout}
-    </p>
-    <img src="${food.imlink}" alt="">
-    <div class="money-cart">
-    <div class="price">$ ${food.pprice}</div>
-    <div class="add"><span class="addminus">ADD TO CART</span></div>
-    </div>
-<button type="button" class="btn btn-dark delete-product">Delete</button>
+// function foodRenderProducts() {
+//   let foodwithBox = foodproducts.map((food, i) => {
+//     return `    <div class="boxes" data-index="${i}">
+//     <h4>${food.pname}</h4>
+//     <p>${food.pabout}
+//     </p>
+//     <img src="${food.imlink}" alt="">
+//     <div class="money-cart">
+//     <div class="price">$ ${food.pprice}</div>
+//     <div class="add"><span class="addminus">ADD TO CART</span></div>
+//     </div>
+// <button type="button" class="btn btn-dark delete-product">Delete</button>
 
-    </div>`;
-  });
-  let foodBox = document.getElementById("foodBox");
-  foodBox.innerHTML = foodwithBox.join("");
-  const addButtons = foodBox.querySelectorAll(".addminus");
-  addButtons.forEach((e) => {
-    e.addEventListener("click", function () {
-      const box = e.closest(".boxes");
+//     </div>`;
+//   });
+//   let foodBox = document.getElementById("foodBox");
+//   foodBox.innerHTML = foodwithBox.join("");
+//   const addButtons = foodBox.querySelectorAll(".addminus");
+//   addButtons.forEach((e) => {
+//     e.addEventListener("click", function () {
+//       const box = e.closest(".boxes");
 
-      if (e.classList.contains("minus")) {
-        showNotification("error", "Item removed from cart");
-        e.classList.remove("minus");
-        e.innerHTML = "ADD TO CART";
-        const cloneBox = productToCartMap.get(box);
-        // redSingnal.classList.add("red-signal");
-        if (cloneBox) {
-          removeFromCart(cloneBox);
-          productToCartMap.delete(box);
-        }
-      } else {
-        showNotification("success", "Item added to cart");
-        e.classList.add("minus");
-        e.innerHTML = "Remove Item";
-        addToCart(box);
-      }
-    });
-  });
+//       if (e.classList.contains("minus")) {
+//         showNotification("error", "Item removed from cart");
+//         e.classList.remove("minus");
+//         e.innerHTML = "ADD TO CART";
+//         const cloneBox = productToCartMap.get(box);
+//         // redSingnal.classList.add("red-signal");
+//         if (cloneBox) {
+//           removeFromCart(cloneBox);
+//           productToCartMap.delete(box);
+//         }
+//       } else {
+//         showNotification("success", "Item added to cart");
+//         e.classList.add("minus");
+//         e.innerHTML = "Remove Item";
+//         addToCart(box);
+//       }
+//     });
+//   });
 
-  const deleteButtons = foodBox.querySelectorAll(".delete-product");
-  deleteButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const box = btn.closest(".boxes");
-      const index = parseInt(box.getAttribute("data-index"));
-      foodproducts.splice(index, 1); // ✅ delete the correct product
-      saveAllProducts();
-      foodRenderProducts(); // re-render updated list
-    });
-  });
-}
+//   const deleteButtons = foodBox.querySelectorAll(".delete-product");
+//   deleteButtons.forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       const box = btn.closest(".boxes");
+//       const index = parseInt(box.getAttribute("data-index"));
+//       foodproducts.splice(index, 1); // ✅ delete the correct product
+//       saveAllProducts();
+//       foodRenderProducts(); // re-render updated list
+//     });
+//   });
+// }
 
-function addfoodproduct(food) {
-  food.preventDefault();
-  let convert = {
-    pname: food.target[0].value,
-    pabout: food.target[1].value,
-    imlink: food.target[2].value,
-    pprice: food.target[3].value,
-  };
-  foodproducts = [...foodproducts, convert];
-  foodRenderProducts();
-  saveAllProducts();
-  // renderProducts();
-  food.target[0].value = "";
-  food.target[1].value = "";
-  food.target[2].value = "";
-  food.target[3].value = "";
-}
+// function addfoodproduct(food) {
+//   food.preventDefault();
+//   let convert = {
+//     pname: food.target[0].value,
+//     pabout: food.target[1].value,
+//     imlink: food.target[2].value,
+//     pprice: food.target[3].value,
+//   };
+//   foodproducts = [...foodproducts, convert];
+//   foodRenderProducts();
+//   saveAllProducts();
+//   // renderProducts();
+//   food.target[0].value = "";
+//   food.target[1].value = "";
+//   food.target[2].value = "";
+//   food.target[3].value = "";
+// }
 
 // foodRenderProducts();
 
@@ -288,185 +288,185 @@ function addfoodproduct(food) {
 
 // cosmatic section starts
 
-function cosmaticRenderProducts() {
-  let cosmaticwithBox = cosmaticProducts.map((cosmatic, i) => {
-    return `    <div class="boxes" data-index="${i}">
-    <h4>${cosmatic.pname}</h4>
-    <p>${cosmatic.pabout}
-    </p>
-    <img src="${cosmatic.imlink}" alt="">
-    <div class="money-cart">
-    <div class="price">$ ${cosmatic.pprice}</div>
-    <div class="add"><span class="addminus">ADD TO CART</span></div>
+// function cosmaticRenderProducts() {
+//   let cosmaticwithBox = cosmaticProducts.map((cosmatic, i) => {
+//     return `    <div class="boxes" data-index="${i}">
+//     <h4>${cosmatic.pname}</h4>
+//     <p>${cosmatic.pabout}
+//     </p>
+//     <img src="${cosmatic.imlink}" alt="">
+//     <div class="money-cart">
+//     <div class="price">$ ${cosmatic.pprice}</div>
+//     <div class="add"><span class="addminus">ADD TO CART</span></div>
 
-    </div>
-<button type="button" class="btn btn-dark delete-product">Delete</button>
+//     </div>
+// <button type="button" class="btn btn-dark delete-product">Delete</button>
 
-    </div>`;
-  });
-  let cosmaticBox = document.getElementById("cosmaticBox");
-  cosmaticBox.innerHTML = cosmaticwithBox.join("");
-  const addButtons = cosmaticBox.querySelectorAll(".addminus");
-  addButtons.forEach((e) => {
-    e.addEventListener("click", function () {
-      const box = e.closest(".boxes");
+//     </div>`;
+//   });
+//   let cosmaticBox = document.getElementById("cosmaticBox");
+//   cosmaticBox.innerHTML = cosmaticwithBox.join("");
+//   const addButtons = cosmaticBox.querySelectorAll(".addminus");
+//   addButtons.forEach((e) => {
+//     e.addEventListener("click", function () {
+//       const box = e.closest(".boxes");
 
-      if (e.classList.contains("minus")) {
-        showNotification("error", "Item removed from cart");
-        e.classList.remove("minus");
-        e.innerHTML = "ADD TO CART";
-        const cloneBox = productToCartMap.get(box);
-        // redSingnal.classList.add("red-signal");
-        if (cloneBox) {
-          removeFromCart(cloneBox);
-          productToCartMap.delete(box);
-        }
-      } else {
-        showNotification("success", "Item added to cart");
-        e.classList.add("minus");
-        e.innerHTML = "Remove Item";
-        addToCart(box);
-      }
-    });
-  });
+//       if (e.classList.contains("minus")) {
+//         showNotification("error", "Item removed from cart");
+//         e.classList.remove("minus");
+//         e.innerHTML = "ADD TO CART";
+//         const cloneBox = productToCartMap.get(box);
+//         // redSingnal.classList.add("red-signal");
+//         if (cloneBox) {
+//           removeFromCart(cloneBox);
+//           productToCartMap.delete(box);
+//         }
+//       } else {
+//         showNotification("success", "Item added to cart");
+//         e.classList.add("minus");
+//         e.innerHTML = "Remove Item";
+//         addToCart(box);
+//       }
+//     });
+//   });
 
-  const deleteButtons = cosmaticBox.querySelectorAll(".delete-product");
-  deleteButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const box = btn.closest(".boxes");
-      const index = parseInt(box.getAttribute("data-index"));
-      cosmaticProducts.splice(index, 1); // ✅ delete the correct product
-      saveAllProducts();
-      cosmaticRenderProducts(); // re-render updated list
-    });
-  });
-}
+//   const deleteButtons = cosmaticBox.querySelectorAll(".delete-product");
+//   deleteButtons.forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       const box = btn.closest(".boxes");
+//       const index = parseInt(box.getAttribute("data-index"));
+//       cosmaticProducts.splice(index, 1); // ✅ delete the correct product
+//       saveAllProducts();
+//       cosmaticRenderProducts(); // re-render updated list
+//     });
+//   });
+// }
 
-function addcosmaticproduct(cosmatic) {
-  cosmatic.preventDefault();
-  let convert = {
-    pname: cosmatic.target[0].value,
-    pabout: cosmatic.target[1].value,
-    imlink: cosmatic.target[2].value,
-    pprice: cosmatic.target[3].value,
-  };
+// function addcosmaticproduct(cosmatic) {
+//   cosmatic.preventDefault();
+//   let convert = {
+//     pname: cosmatic.target[0].value,
+//     pabout: cosmatic.target[1].value,
+//     imlink: cosmatic.target[2].value,
+//     pprice: cosmatic.target[3].value,
+//   };
 
-  cosmaticProducts = [...cosmaticProducts, convert];
-  cosmaticRenderProducts();
-  saveAllProducts();
-  // renderProducts();
-  cosmatic.target[0].value = "";
-  cosmatic.target[1].value = "";
-  cosmatic.target[2].value = "";
-  cosmatic.target[3].value = "";
-}
+//   cosmaticProducts = [...cosmaticProducts, convert];
+//   cosmaticRenderProducts();
+//   saveAllProducts();
+//   // renderProducts();
+//   cosmatic.target[0].value = "";
+//   cosmatic.target[1].value = "";
+//   cosmatic.target[2].value = "";
+//   cosmatic.target[3].value = "";
+// }
 // cosmaticRenderProducts();
 
 // cosmatic section ends
 
 // furniture section starts
 
-function furnitureRenderProducts() {
-  let furnitureWithBox = furnitureProducts.map((furniture, i) => {
-    return `    <div class="boxes" data-index="${i}">
-    <h4>${furniture.pname}</h4>
-    <p>${furniture.pabout}
-    </p>
-    <img src="${furniture.imlink}" alt="">
-    <div class="money-cart">
-    <div class="price">$ ${furniture.pprice}</div>
-    <div class="add"><span class="addminus">ADD TO CART</span></div>
-    </div>
-<button type="button" class="btn btn-dark delete-product">Delete</button>
+// function furnitureRenderProducts() {
+//   let furnitureWithBox = furnitureProducts.map((furniture, i) => {
+//     return `    <div class="boxes" data-index="${i}">
+//     <h4>${furniture.pname}</h4>
+//     <p>${furniture.pabout}
+//     </p>
+//     <img src="${furniture.imlink}" alt="">
+//     <div class="money-cart">
+//     <div class="price">$ ${furniture.pprice}</div>
+//     <div class="add"><span class="addminus">ADD TO CART</span></div>
+//     </div>
+// <button type="button" class="btn btn-dark delete-product">Delete</button>
 
-    </div>`;
-  });
-  let furnitureBox = document.getElementById("furnitureBox");
-  furnitureBox.innerHTML = furnitureWithBox.join("");
+//     </div>`;
+//   });
+//   let furnitureBox = document.getElementById("furnitureBox");
+//   furnitureBox.innerHTML = furnitureWithBox.join("");
 
-  const addButtons = furnitureBox.querySelectorAll(".addminus");
-  addButtons.forEach((e) => {
-    e.addEventListener("click", function () {
-      const box = e.closest(".boxes");
+//   const addButtons = furnitureBox.querySelectorAll(".addminus");
+//   addButtons.forEach((e) => {
+//     e.addEventListener("click", function () {
+//       const box = e.closest(".boxes");
 
-      if (e.classList.contains("minus")) {
-        showNotification("error", "Item removed from cart");
-        e.classList.remove("minus");
-        e.innerHTML = "ADD TO CART";
-        const cloneBox = productToCartMap.get(box);
-        // redSingnal.classList.add("red-signal");
-        if (cloneBox) {
-          removeFromCart(cloneBox);
-          productToCartMap.delete(box);
-        }
-      } else {
-        showNotification("success", "Item added to cart");
-        e.classList.add("minus");
-        e.innerHTML = "Remove Item";
-        addToCart(box);
-      }
-    });
-  });
+//       if (e.classList.contains("minus")) {
+//         showNotification("error", "Item removed from cart");
+//         e.classList.remove("minus");
+//         e.innerHTML = "ADD TO CART";
+//         const cloneBox = productToCartMap.get(box);
+//         // redSingnal.classList.add("red-signal");
+//         if (cloneBox) {
+//           removeFromCart(cloneBox);
+//           productToCartMap.delete(box);
+//         }
+//       } else {
+//         showNotification("success", "Item added to cart");
+//         e.classList.add("minus");
+//         e.innerHTML = "Remove Item";
+//         addToCart(box);
+//       }
+//     });
+//   });
 
-  const deleteButtons = furnitureBox.querySelectorAll(".delete-product");
-  deleteButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const box = btn.closest(".boxes");
-      const index = parseInt(box.getAttribute("data-index"));
-      furnitureProducts.splice(index, 1); // ✅ delete the correct product
-      saveAllProducts();
-      furnitureRenderProducts(); // re-render updated list
-    });
-  });
-}
+//   const deleteButtons = furnitureBox.querySelectorAll(".delete-product");
+//   deleteButtons.forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       const box = btn.closest(".boxes");
+//       const index = parseInt(box.getAttribute("data-index"));
+//       furnitureProducts.splice(index, 1); // ✅ delete the correct product
+//       saveAllProducts();
+//       furnitureRenderProducts(); // re-render updated list
+//     });
+//   });
+// }
 
-function addfurnitureProduct(furniture) {
-  furniture.preventDefault();
-  let convert = {
-    pname: furniture.target[0].value,
-    pabout: furniture.target[1].value,
-    imlink: furniture.target[2].value,
-    pprice: furniture.target[3].value,
-  };
-  console.log(furniture.target[0].value);
+// function addfurnitureProduct(furniture) {
+//   furniture.preventDefault();
+//   let convert = {
+//     pname: furniture.target[0].value,
+//     pabout: furniture.target[1].value,
+//     imlink: furniture.target[2].value,
+//     pprice: furniture.target[3].value,
+//   };
+//   console.log(furniture.target[0].value);
 
-  furnitureProducts = [...furnitureProducts, convert];
-  furnitureRenderProducts();
-  saveAllProducts();
-  // renderProducts();
-  furniture.target[0].value = "";
-  furniture.target[1].value = "";
-  furniture.target[2].value = "";
-  furniture.target[3].value = "";
-}
+//   furnitureProducts = [...furnitureProducts, convert];
+//   furnitureRenderProducts();
+//   saveAllProducts();
+//   // renderProducts();
+//   furniture.target[0].value = "";
+//   furniture.target[1].value = "";
+//   furniture.target[2].value = "";
+//   furniture.target[3].value = "";
+// }
 
 // furnitureRenderProducts();
 
 // furniture section ends
 
-// addminus.forEach(function (e) {
-//   e.addEventListener("click", function () {
-//     const box = e.closest(".boxes");
-//     if (e.classList.contains("minus")) {
-//       e.classList.remove("minus");
-//       showNotification("error", "Item removed from cart");
+addButtons.forEach(function (e) {
+  e.addEventListener("click", function () {
+    const box = e.closest(".boxes");
+    if (e.classList.contains("minus")) {
+      e.classList.remove("minus");
+      showNotification("error", "Item removed from cart");
 
-//       e.innerHTML = "ADD TO CART";
-//       const cloneBox = productToCartMap.get(box);
-//       // redSingnal.classList.add("red-signal");
-//       if (cloneBox) {
-//         removeFromCart(cloneBox);
-//         productToCartMap.delete(box);
-//       }
-//     } else {
-//       showNotification("success", "Item added to cart");
+      e.innerHTML = "ADD TO CART";
+      const cloneBox = productToCartMap.get(box);
+      // redSingnal.classList.add("red-signal");
+      if (cloneBox) {
+        removeFromCart(cloneBox);
+        productToCartMap.delete(box);
+      }
+    } else {
+      showNotification("success", "Item added to cart");
 
-//       e.classList.add("minus");
-//       e.innerHTML = "Remove Item";
-//       addToCart(box);
-//     }
-//   });
-// });
+      e.classList.add("minus");
+      e.innerHTML = "Remove Item";
+      addToCart(box);
+    }
+  });
+});
 
 function addToCart(box) {
   const clone = box.cloneNode(true);
@@ -488,13 +488,7 @@ function addToCart(box) {
   productToCartMap.set(box, clone);
   updateCartStorage();
 
-  let addcart = document.createElement("div");
-  addcart.classList.add("green-signal");
-  let i = document.createElement("i");
-  i.classList.add("fa-solid", "fa-circle-check");
-  addcart.appendChild(i);
-  addcart.append(" Item added to cart");
-  header.appendChild(addcart);
+  showNotification("success", "Item added to cart");
 }
 
 function removeFromCart(box) {
@@ -504,15 +498,6 @@ function removeFromCart(box) {
     showNotification("error", "Item removed from cart");
   }
   // const header = document.querySelector("header");
-
-  let removeCart = document.createElement("div");
-  removeCart.classList.add("red-signal");
-  let i = document.createElement("i");
-  // removeCart.innerHTML = i + "Item removed from cart";
-  i.classList.add("fa-solid", "fa-circle-xmark");
-  removeCart.appendChild(i);
-  removeCart.append(" Item removed from cart");
-  header.appendChild(removeCart);
 }
 function showNotification(type, message) {
   const div = document.createElement("div");
@@ -528,119 +513,165 @@ function showNotification(type, message) {
   setTimeout(() => div.remove(), 2000);
 }
 
-function saveAllProducts() {
-  localStorage.setItem("clothesProducts", JSON.stringify(products));
-  localStorage.setItem("foodProducts", JSON.stringify(foodproducts));
-  localStorage.setItem("cosmaticProducts", JSON.stringify(cosmaticProducts));
-  localStorage.setItem("furnitureProducts", JSON.stringify(furnitureProducts));
-}
-
-// --- 2. Load all product arrays from localStorage at start ---
-
-function loadAllProducts() {
-  products = JSON.parse(localStorage.getItem("clothesProducts")) || [];
-  foodproducts = JSON.parse(localStorage.getItem("foodProducts")) || [];
-  cosmaticProducts = JSON.parse(localStorage.getItem("cosmaticProducts")) || [];
-  furnitureProducts =
-    JSON.parse(localStorage.getItem("furnitureProducts")) || [];
-
-  renderProducts();
-  foodRenderProducts();
-  cosmaticRenderProducts();
-  furnitureRenderProducts();
-
-  loadCartItems();
-}
-
-// --- 3. Save cart to localStorage ---
-
 function updateCartStorage() {
-  const items = [];
-  productToCartMap.forEach((cloneBox, originalBox) => {
-    const pname = originalBox.querySelector("h4").innerText;
-    const pabout = originalBox.querySelector("p").innerText;
-    const imlink = originalBox.querySelector("img").src;
-    const pprice = originalBox
-      .querySelector(".price")
-      .innerText.replace("$", "")
-      .trim();
-    items.push({ pname, pabout, imlink, pprice });
+  const cartItems = [];
+
+  cartBoxes.querySelectorAll(".boxes").forEach((item) => {
+    cartItems.push({
+      title: item.querySelector("h4")?.innerText,
+      desc: item.querySelector("p")?.innerText,
+      price: item.querySelector(".price")?.innerText,
+      img: item.querySelector("img")?.src,
+    });
   });
-  localStorage.setItem("cartItems", JSON.stringify(items));
+
+  localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
-// --- 4. Load cart from localStorage on page load ---
+window.addEventListener("DOMContentLoaded", restoreCartFromStorage);
 
-function loadCartItems() {
-  const items = JSON.parse(localStorage.getItem("cartItems")) || [];
-  items.forEach((item) => {
-    // Find matching box in DOM
-    const originalBoxes = document.querySelectorAll(".boxes");
-    let matchedOriginalBox = null;
+function restoreCartFromStorage() {
+  const data = JSON.parse(localStorage.getItem("cart")) || [];
 
-    originalBoxes.forEach((b) => {
-      const name = b.querySelector("h4")?.innerText;
-      const about = b.querySelector("p")?.innerText;
-      const price = b
-        .querySelector(".price")
-        ?.innerText.replace("$", "")
-        .trim();
-      const img = b.querySelector("img")?.src;
+  data.forEach((product) => {
+    const box = document.createElement("div");
+    box.classList.add("boxes");
 
-      if (
-        name === item.pname &&
-        about === item.pabout &&
-        price === item.pprice &&
-        img === item.imlink
-      ) {
-        matchedOriginalBox = b;
-        const btn = b.querySelector(".addminus");
-        if (btn) {
-          btn.classList.add("minus");
-          btn.innerText = "Remove Item";
-        }
-      }
-    });
-
-    // Create clone box for cart
-    const cloneBox = document.createElement("div");
-    cloneBox.classList.add("boxes");
-    cloneBox.innerHTML = `
-      <h4>${item.pname}</h4>
-      <p>${item.pabout}</p>
-      <img src="${item.imlink}" alt="">
+    box.innerHTML = `
+      <h4>${product.title}</h4>
+      <p>${product.desc}</p>
+      <img src="${product.img}" alt="">
       <div class="money-cart">
-        <div class="price">$ ${item.pprice}</div>
+        <div class="price">${product.price}</div>
         <div class="add"><span class="addminus minus">Remove Item</span></div>
       </div>
     `;
 
-    const btn = cloneBox.querySelector(".addminus");
+    const btn = box.querySelector(".addminus");
     btn.addEventListener("click", function () {
       btn.classList.remove("minus");
       btn.innerHTML = "ADD TO CART";
-      removeFromCart(cloneBox);
-
-      if (matchedOriginalBox) {
-        const originalBtn = matchedOriginalBox.querySelector(".addminus");
-        if (originalBtn) {
-          originalBtn.classList.remove("minus");
-          originalBtn.innerText = "ADD TO CART";
-        }
-        productToCartMap.delete(matchedOriginalBox);
-      }
-
+      removeFromCart(box);
       updateCartStorage();
     });
 
-    cartBoxes.appendChild(cloneBox);
-
-    // ✅ Reconnect map
-    if (matchedOriginalBox) {
-      productToCartMap.set(matchedOriginalBox, cloneBox);
-    }
+    cartBoxes.appendChild(box);
   });
 }
+
+// function saveAllProducts() {
+//   localStorage.setItem("clothesProducts", JSON.stringify(products));
+//   localStorage.setItem("foodProducts", JSON.stringify(foodproducts));
+//   localStorage.setItem("cosmaticProducts", JSON.stringify(cosmaticProducts));
+//   localStorage.setItem("furnitureProducts", JSON.stringify(furnitureProducts));
+// }
+
+// --- 2. Load all product arrays from localStorage at start ---
+
+// function loadAllProducts() {
+//   products = JSON.parse(localStorage.getItem("clothesProducts")) || [];
+//   foodproducts = JSON.parse(localStorage.getItem("foodProducts")) || [];
+//   cosmaticProducts = JSON.parse(localStorage.getItem("cosmaticProducts")) || [];
+//   furnitureProducts =
+//     JSON.parse(localStorage.getItem("furnitureProducts")) || [];
+
+//   renderProducts();
+//   foodRenderProducts();
+//   cosmaticRenderProducts();
+//   furnitureRenderProducts();
+
+//   loadCartItems();
+// }
+
+// --- 3. Save cart to localStorage ---
+
+// function updateCartStorage() {
+//   const items = [];
+//   productToCartMap.forEach((cloneBox, originalBox) => {
+//     const pname = originalBox.querySelector("h4").innerText;
+//     const pabout = originalBox.querySelector("p").innerText;
+//     const imlink = originalBox.querySelector("img").src;
+//     const pprice = originalBox
+//       .querySelector(".price")
+//       .innerText.replace("$", "")
+//       .trim();
+//     items.push({ pname, pabout, imlink, pprice });
+//   });
+//   localStorage.setItem("cartItems", JSON.stringify(items));
+// }
+
+// --- 4. Load cart from localStorage on page load ---
+
+// function loadCartItems() {
+//   const items = JSON.parse(localStorage.getItem("cartItems")) || [];
+//   items.forEach((item) => {
+//     // Find matching box in DOM
+//     const originalBoxes = document.querySelectorAll(".boxes");
+//     let matchedOriginalBox = null;
+
+//     originalBoxes.forEach((b) => {
+//       const name = b.querySelector("h4")?.innerText;
+//       const about = b.querySelector("p")?.innerText;
+//       const price = b
+//         .querySelector(".price")
+//         ?.innerText.replace("$", "")
+//         .trim();
+//       const img = b.querySelector("img")?.src;
+
+//       if (
+//         name === item.pname &&
+//         about === item.pabout &&
+//         price === item.pprice &&
+//         img === item.imlink
+//       ) {
+//         matchedOriginalBox = b;
+//         const btn = b.querySelector(".addminus");
+//         if (btn) {
+//           btn.classList.add("minus");
+//           btn.innerText = "Remove Item";
+//         }
+//       }
+//     });
+
+// Create clone box for cart
+// const cloneBox = document.createElement("div");
+// cloneBox.classList.add("boxes");
+// cloneBox.innerHTML = `
+//   <h4>${item.pname}</h4>
+//   <p>${item.pabout}</p>
+//   <img src="${item.imlink}" alt="">
+//   <div class="money-cart">
+//     <div class="price">$ ${item.pprice}</div>
+//     <div class="add"><span class="addminus minus">Remove Item</span></div>
+//   </div>
+// `;
+
+// const btn = cloneBox.querySelector(".addminus");
+// btn.addEventListener("click", function () {
+//   btn.classList.remove("minus");
+//   btn.innerHTML = "ADD TO CART";
+//   removeFromCart(cloneBox);
+
+//   if (matchedOriginalBox) {
+//     const originalBtn = matchedOriginalBox.querySelector(".addminus");
+//     if (originalBtn) {
+//       originalBtn.classList.remove("minus");
+//       originalBtn.innerText = "ADD TO CART";
+//     }
+//     productToCartMap.delete(matchedOriginalBox);
+//   }
+
+//   updateCartStorage();
+// });
+
+//     cartBoxes.appendChild(cloneBox);
+
+//     // ✅ Reconnect map
+//     if (matchedOriginalBox) {
+//       productToCartMap.set(matchedOriginalBox, cloneBox);
+//     }
+//   });
+// }
 
 // function updateCartTotal() {
 //   let total = 0;
