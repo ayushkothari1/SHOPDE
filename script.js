@@ -694,5 +694,3 @@ closeIcon.addEventListener("click", function () {
   Video.pause();
   Video.currentTime = 0;
 });
-
-// function addToCart() {}
